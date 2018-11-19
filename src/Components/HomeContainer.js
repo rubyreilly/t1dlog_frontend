@@ -4,7 +4,10 @@ import LogContainer from './LogContainer'
 class HomeContainer extends Component{
   render(){
     return(
+      <div>
+      
       <LogContainer/>
+      </div>
     )
   }
 }
