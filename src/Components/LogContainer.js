@@ -5,19 +5,23 @@ class LogContainer extends Component{
     return(
       <div id='log'>
 
-      <div class="ui top attached tabular menu">
-        <a class="active item">Humalog</a>
-        <a class="item">Lantus</a>
+      <div className="ui top attached tabular menu">
+        <div className="active item">Humalog</div>
+        <div className="item">Lantus</div>
+
       </div>
 
-        <div className="ui bottom attached segment">
+        <div className="ui bottom attached active tab segment">
+
         <table className="ui celled table">
 
-          <thead>
-            <tr><th>Date</th>
+        <thead>
+            <tr>
+            <th>Date</th>
             <th>Time Administered</th>
             <th>Time Remaining</th>
-            <th>Status</th></tr>
+            <th>Status</th>
+            </tr>
           </thead>
 
         <tbody>
@@ -31,7 +35,8 @@ class LogContainer extends Component{
 
         </table>
       </div>
-      
+
+
       </div>
     )
   }
