@@ -4,7 +4,7 @@ class TimerContainer extends Component{
 
   render(){
     return(
-      <div>
+      <div id='log'>
       <div className="ui center aligned green inverted segment">
 
       <h3>Humalog Timer</h3>
