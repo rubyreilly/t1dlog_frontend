@@ -1,12 +1,14 @@
 //action creators here
-const getEntries = (entries)=>({type:'GET_ENTRIES', payload:entries})
+const getInsulins = (insulins)=>({type:'GET_INSULINS', payload:insulins})
+
+export const selectInsulin = (insulin)=>({type:'SELECT_INSULIN', payload:insulin})
 
 //thunk creators here
-export const fetchEntries = ()=>{
+export const fetchInsulins = ()=>{
   return (dispatch)=>{
-    return fetch('http://localhost:3001/api/v1/users/1/entries')
+    return fetch(`http://localhost:3001/api/v1/users/1/insulins`)
     .then(res=>res.json())
-    .then((res)=>dispatch(getEntries(res)))
+    .then((res)=>dispatch(getInsulins(res)))
     .catch(console.error)
   }
 }

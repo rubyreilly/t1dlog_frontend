@@ -1,53 +1,36 @@
 import React, { Component } from 'react';
-
+// import {reducer} from '../Redux/reducer'
 import {connect} from 'react-redux'
-import {fetchEntries} from '../Redux/actions'
-import LogEntry from './LogEntry'
+import {fetchInsulins, selectInsulin} from '../Redux/actions'
+import InsulinLog from './InsulinLog'
+
 
 class LogContainer extends Component{
 
   componentDidMount(){
-    this.props.fetchEntries()
+    this.props.fetchInsulins()
+
   }
 
-  generateLogEntries=(entries)=>{
-
-    return entries.map(entryObj=><LogEntry entryObj={entryObj} key={entryObj.id}/>)
+  generateTabs=(insulins)=>{
+    return insulins.map(insulinObj=>{
+      return <div className={this.props.selectedInsulin == insulinObj.id ? "active item":"item"}
+      onClick={()=> this.props.selectInsulin(insulinObj.id)}>
+      {insulinObj.insulin_name}
+      </div>
+    })
   }
+
 
   render(){
-
     return(
       <div id='log'>
 
       <div className="ui top attached tabular menu">
-        <div className="active item">Humalog</div>
-        <div className="item">Lantus</div>
+        {this.generateTabs(this.props.insulins)}
 
       </div>
-
-        <div className="ui bottom attached active tab segment">
-
-        <table className="ui celled table">
-
-        <thead>
-            <tr>
-            <th>Date</th>
-            <th>Start Time</th>
-            <th>End Time</th>
-            <th>Insulin Name</th>
-            <th>Insulin Duration</th>
-            <th>Time Left</th>
-            <th>Status</th>
-            </tr>
-          </thead>
-
-        <tbody>
-          {this.generateLogEntries(this.props.entries)}
-        </tbody>
-
-        </table>
-      </div>
+      <InsulinLog/>
 
 
       </div>
@@ -56,12 +39,16 @@ class LogContainer extends Component{
 }
 
 const mapStateToProps= (state)=>{
-  return {entries: state.entries}
+  return {
+    insulins: state.insulins,
+    selectedInsulin: state.selectedInsulin
+  }
 }
 
 const mapDispatchToProps=(dispatch)=>{
   return{
-    fetchEntries:()=>dispatch(fetchEntries())
+    fetchInsulins:()=>dispatch(fetchInsulins()),
+    selectInsulin:(insulin)=>dispatch(selectInsulin(insulin))
   }
 }
 

@@ -1,13 +1,16 @@
 const initialState = {
   user:{},
   insulins:[],
-  entries: []
+  selectedInsulin: 4
 }
 
 const reducer = (state = initialState, action) =>{
   switch (action.type){
-    case("GET_ENTRIES"):{
-      return {...state, entries:action.payload}
+    case("GET_INSULINS"):{
+      return {...state, insulins:action.payload}
+    }
+    case("SELECT_INSULIN"):{
+      return {...state, selectedInsulin: action.payload}
     }
 
     default:
