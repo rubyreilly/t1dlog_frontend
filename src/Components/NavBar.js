@@ -4,7 +4,7 @@ class NavBar extends Component{
 
   render(){
     return(
-      
+
       <div className="ui compact vertical labeled menu">
       <a className="active item">
       <i className="home icon"></i>

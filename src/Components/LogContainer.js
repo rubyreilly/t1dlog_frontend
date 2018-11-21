@@ -1,7 +1,22 @@
 import React, { Component } from 'react';
 
+import {connect} from 'react-redux'
+import {fetchEntries} from '../Redux/actions'
+import LogEntry from './LogEntry'
+
 class LogContainer extends Component{
+
+  componentDidMount(){
+    this.props.fetchEntries()
+  }
+
+  generateLogEntries=(entries)=>{
+
+    return entries.map(entryObj=><LogEntry entryObj={entryObj} key={entryObj.id}/>)
+  }
+
   render(){
+
     return(
       <div id='log'>
 
@@ -25,12 +40,7 @@ class LogContainer extends Component{
           </thead>
 
         <tbody>
-          <tr>
-          <td data-label="date">11/18</td>
-          <td data-label="time-administered">2:40 PM</td>
-          <td data-label="time-remaining">1hr25</td>
-          <td data-label="status">complete</td>
-          </tr>
+          {this.generateLogEntries(this.props.entries)}
         </tbody>
 
         </table>
@@ -42,4 +52,15 @@ class LogContainer extends Component{
   }
 }
 
-export default LogContainer
+const mapStateToProps= (state)=>{
+  return {entries: state.entries}
+}
+
+const mapDispatchToProps=(dispatch)=>{
+  return{
+    fetchEntries:()=>dispatch(fetchEntries())
+  }
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(LogContainer)
