@@ -33,8 +33,11 @@ class LogContainer extends Component{
         <thead>
             <tr>
             <th>Date</th>
-            <th>Time Administered</th>
-            <th>Time Remaining</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Insulin Name</th>
+            <th>Insulin Duration</th>
+            <th>Time Left</th>
             <th>Status</th>
             </tr>
           </thead>
