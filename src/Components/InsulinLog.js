@@ -7,9 +7,15 @@ import {connect} from 'react-redux'
 class InsulinLog extends Component{
 
 
-  generateLogEntries=()=>{
-
-    // return entries.map(entryObj=><LogEntry entryObj={entryObj} key={entryObj.id}/>)
+  generateLogEntries=(insulins)=>{
+    console.log(insulins)
+    if (insulins.length===0){
+      return null
+    }else{
+      const insulin = insulins.find((insulin)=>insulin.id === this.props.selectedInsulin)
+      return insulin.all_associated_entries.map
+      (entryObj=><LogEntry entryObj={entryObj} key={entryObj.id}/>)
+    }
   }
 
 
@@ -27,27 +33,26 @@ class InsulinLog extends Component{
           <th>Date</th>
           <th>Start Time</th>
           <th>End Time</th>
-          <th>Insulin Name</th>
-          <th>Insulin Duration</th>
+      
           <th>Time Left</th>
           <th>Status</th>
           </tr>
         </thead>
-
       <tbody>
-
+      {this.generateLogEntries(this.props.insulins)}
 
       </tbody>
-
       </table>
     </div>
-
     )
   }
 }
 
 const mapStateToProps= (state)=>{
-  return {selectedInsulin: state.selectedInsulin}
+  return {
+    selectedInsulin: state.selectedInsulin,
+    insulins: state.insulins
+  }
 }
 
 
