@@ -5,18 +5,24 @@ import Header from './Components/Header'
 import TimerContainer from './Components/TimerContainer'
 import 'semantic-ui-css/semantic.min.css';
 
+
+
 import './App.css';
 
 class App extends Component {
+
+
+
   render() {
+
     return (
       <div>
-      <div class="ui three column grid">
-        <div class="column">
+      <div className="ui three column grid">
+        <div className="column">
 
 
       <NavBar/></div>
-      <div class="column">
+      <div className="column">
       <Header/></div></div>
 
       <TimerContainer/>
@@ -27,5 +33,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;
