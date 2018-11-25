@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import LogEntry from './LogEntry'
 import {connect} from 'react-redux'
-// import {reducer} from '../Redux/reducer'
-
 
 class InsulinLog extends Component{
-
-
   generateLogEntries=(insulins)=>{
     console.log(insulins)
     if (insulins.length===0){
@@ -18,29 +14,22 @@ class InsulinLog extends Component{
     }
   }
 
-
-
-
   render(){
     console.log(this.props)
     return(
       <div className="ui bottom attached active tab segment">
-
       <table className="ui celled table">
-
       <thead>
           <tr>
           <th>Date</th>
           <th>Start Time</th>
           <th>End Time</th>
-      
           <th>Time Left</th>
           <th>Status</th>
           </tr>
         </thead>
       <tbody>
       {this.generateLogEntries(this.props.insulins)}
-
       </tbody>
       </table>
     </div>

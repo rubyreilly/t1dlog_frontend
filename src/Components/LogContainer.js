@@ -6,10 +6,8 @@ import InsulinLog from './InsulinLog'
 
 
 class LogContainer extends Component{
-
   componentDidMount(){
     this.props.fetchInsulins()
-
   }
 
   generateTabs=(insulins)=>{
@@ -25,14 +23,10 @@ class LogContainer extends Component{
   render(){
     return(
       <div id='log'>
-
       <div className="ui top attached tabular menu">
         {this.generateTabs(this.props.insulins)}
-
       </div>
       <InsulinLog/>
-
-
       </div>
     )
   }

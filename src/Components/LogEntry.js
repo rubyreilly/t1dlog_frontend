@@ -7,16 +7,13 @@ class LogEntry extends Component{
     const {entryObj}=this.props
      console.log(entryObj)
     return(
-
-      <tr>
+      <tr className={entryObj.status == "active" ? "ui inverted green table segment" : null}>
       <td data-label="date">{entryObj.formatted_date}</td>
       <td data-label="start-time">{entryObj.formatted_start_time}</td>
       <td data-label="end_time">{entryObj.formatted_end_time}</td>
       <td data-label="time_left">{entryObj.time_left}</td>
       <td data-label="status">{entryObj.status}</td>
-
       </tr>
-
     )
   }
 }
