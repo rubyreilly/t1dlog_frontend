@@ -1,5 +1,5 @@
 const initialState = {
-  user:{},
+  user:1,
   insulins:[],
   selectedInsulin: 4
 }

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class TimerCard extends Component{
   render(){
-    console.log(this.props)
     return(
 
       <div className="ui center aligned green inverted segment">
