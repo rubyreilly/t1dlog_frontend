@@ -12,7 +12,7 @@ class LogContainer extends Component{
 
   generateTabs=(insulins)=>{
     return insulins.map(insulinObj=>{
-      return <div className={this.props.selectedInsulin == insulinObj.id ? "active item":"item"}
+      return <div className={this.props.selectedInsulin === insulinObj.id ? "active item":"item"}
       onClick={()=> this.props.selectInsulin(insulinObj.id)}>
       {insulinObj.insulin_name}
       </div>
