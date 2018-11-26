@@ -5,7 +5,6 @@ class LogEntry extends Component{
 
   render(){
     const {entryObj}=this.props
-     console.log(entryObj)
     return(
       <tr className={entryObj.status == "active" ? "ui inverted green table segment" : null}>
       <td data-label="date">{entryObj.formatted_date}</td>

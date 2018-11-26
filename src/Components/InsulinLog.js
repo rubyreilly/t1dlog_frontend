@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 
 class InsulinLog extends Component{
   generateLogEntries=(insulins)=>{
-    console.log(insulins)
     if (insulins.length===0){
       return null
     }else{
@@ -15,7 +14,6 @@ class InsulinLog extends Component{
   }
 
   render(){
-    console.log(this.props)
     return(
       <div className="ui bottom attached active tab segment">
       <table className="ui celled table">

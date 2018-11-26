@@ -1,26 +1,37 @@
 import React, { Component } from 'react';
+import TimerCard from './TimerCard'
+import {connect} from 'react-redux'
 
 class TimerContainer extends Component{
+
+  generateTimerCards = ()=>{
+      const insulins = this.props.insulins
+      return insulins.map(insulin=>{
+        return insulin.all_associated_entries.map
+          (entryObj=>{
+            if (entryObj.status === 'active'){
+
+              return <TimerCard entryObj={entryObj} insulinObj={insulin} key={entryObj.id}/>
+            }
+          }
+
+    )
+  })
+}
 
   render(){
     return(
       <div id='log'>
-      <div className="ui center aligned green inverted segment">
-
-      <h3>Humalog Timer</h3>
-      <h1> 1hr 20min of 3hr remaining</h1>
-      <h3>Last Administered 11/18 2:40 PM</h3>
-
-      </div>
-
-      <div className="ui center aligned green inverted segment">
-      <h3>Lantus Timer</h3>
-      <h1> 14hr 15min of 24hr remaining</h1>
-      <h3>Last Administered 11/17 10:30 PM</h3>
-      </div>
+      {this.generateTimerCards()}
       </div>
     )
   }
 }
 
-export default TimerContainer
+const mapStateToProps= (state)=>{
+  return {
+    insulins: state.insulins,
+  }
+}
+
+export default connect(mapStateToProps)(TimerContainer)

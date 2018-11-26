@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 // import {reducer} from '../Redux/reducer'
 import {connect} from 'react-redux'
-import {fetchInsulins, selectInsulin} from '../Redux/actions'
+import {selectInsulin} from '../Redux/actions'
 import InsulinLog from './InsulinLog'
 
 
 class LogContainer extends Component{
-  componentDidMount(){
-    this.props.fetchInsulins()
-  }
+  // componentDidMount(){
+  //   this.props.fetchInsulins()
+  // }
 
   generateTabs=(insulins)=>{
     return insulins.map(insulinObj=>{
@@ -41,7 +41,7 @@ const mapStateToProps= (state)=>{
 
 const mapDispatchToProps=(dispatch)=>{
   return{
-    fetchInsulins:()=>dispatch(fetchInsulins()),
+    // fetchInsulins:()=>dispatch(fetchInsulins()),
     selectInsulin:(insulin)=>dispatch(selectInsulin(insulin))
   }
 }
