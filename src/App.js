@@ -15,7 +15,7 @@ import './App.css';
 class App extends Component {
 
   componentDidMount=()=>{
-    this.props.fetchInsulins()
+    this.props.fetchInsulins(this.props.user)
   }
 
   render() {
@@ -33,11 +33,15 @@ class App extends Component {
   }
 }
 
+const mapStateToProps=(state)=>{
+  return{user:state.user}
+}
+
 const mapDispatchToProps=(dispatch)=>{
   return{
-    fetchInsulins:()=>dispatch(fetchInsulins()),
+    fetchInsulins:(user)=>dispatch(fetchInsulins(user)),
   }
 }
 
 
-export default connect(null,mapDispatchToProps)(App);
+export default connect(mapStateToProps,mapDispatchToProps)(App);

@@ -5,9 +5,9 @@ export const selectInsulin = (insulin)=>({type:'SELECT_INSULIN', payload:insulin
 
 
 //thunk creators here
-export const fetchInsulins = ()=>{
+export const fetchInsulins = (user)=>{
   return (dispatch)=>{
-    return fetch(`http://localhost:3001/api/v1/users/1/insulins`)
+    return fetch(`http://localhost:3001/api/v1/users/${user}/insulins`)
     .then(res=>res.json())
     .then((res)=>dispatch(getInsulins(res)))
     .catch(console.error)
