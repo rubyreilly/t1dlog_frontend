@@ -5,11 +5,19 @@ import Header from './Components/Header'
 import TimerContainer from './Components/TimerContainer'
 import 'semantic-ui-css/semantic.min.css';
 
+import {connect} from 'react-redux'
+import {fetchInsulins} from './Redux/actions'
+
 
 
 import './App.css';
 
 class App extends Component {
+
+  componentDidMount=()=>{
+    this.props.fetchInsulins()
+  }
+
   render() {
     return (
       <div>
@@ -25,5 +33,11 @@ class App extends Component {
   }
 }
 
+const mapDispatchToProps=(dispatch)=>{
+  return{
+    fetchInsulins:()=>dispatch(fetchInsulins()),
+  }
+}
 
-export default App;
+
+export default connect(null,mapDispatchToProps)(App);
