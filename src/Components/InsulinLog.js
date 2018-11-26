@@ -8,8 +8,7 @@ class InsulinLog extends Component{
       return null
     }else{
       const insulin = insulins.find((insulin)=>insulin.id === this.props.selectedInsulin)
-      return insulin.all_associated_entries.map
-      (entryObj=><LogEntry entryObj={entryObj} key={entryObj.id}/>)
+      return insulin.all_associated_entries.map(entryObj=><LogEntry entryObj={entryObj} key={entryObj.id}/>)
     }
   }
 

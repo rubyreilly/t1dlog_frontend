@@ -12,6 +12,12 @@ const reducer = (state = initialState, action) =>{
     case("SELECT_INSULIN"):{
       return {...state, selectedInsulin: action.payload}
     }
+    case("ADD_ENTRY"):{
+      const insulin = state.insulins.find((insulin)=> insulin.id ===action.payload.insulin_id)
+      const insulinData = [...insulin.all_associated_entries, action.payload]
+      return {...state, insulins:[...state.insulins, insulinData]}
+
+    }
 
     default:
       return state
