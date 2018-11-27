@@ -6,7 +6,8 @@ class NewEntryForm extends Component{
 
   state = {
     time:new Date(),
-    insulin:""
+    insulin:"",
+    note:''
   }
 
   handleChange=(e)=>{
@@ -25,7 +26,8 @@ class NewEntryForm extends Component{
       user_id: this.props.user,
       entry_date_and_time: this.state.time.toISOString(),
       insulin_id : insulinObj.id,
-      status: 'active'}
+      status: 'active',
+      note: this.state.note}
     this.props.postEntry(newEntry)
   }
 
@@ -53,9 +55,9 @@ class NewEntryForm extends Component{
 
 
 
-      <div className="inline field">
+      <div className="field">
         <label>Note</label>
-        <textarea rows="2"></textarea>
+        <textarea rows="2" name='note' value={this.state.note} onChange={(e)=>this.handleChange(e)}></textarea>
         </div>
       </div>
 
