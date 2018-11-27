@@ -24,7 +24,8 @@ class NewEntryForm extends Component{
     const newEntry = {
       user_id: this.props.user,
       entry_date_and_time: this.state.time.toISOString(),
-      insulin_id : insulinObj.id}
+      insulin_id : insulinObj.id,
+      status: 'active'}
     this.props.postEntry(newEntry)
   }
 
@@ -48,7 +49,7 @@ class NewEntryForm extends Component{
       <option value="" selected disabled hidden>select insulin</option>
       {this.generateInsulinDropDown()}
       </select>
-      
+
       </div>
 
       </div>

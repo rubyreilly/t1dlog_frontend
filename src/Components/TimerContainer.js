@@ -5,19 +5,22 @@ import {connect} from 'react-redux'
 class TimerContainer extends Component{
 
   generateTimerCards = ()=>{
-  //     const insulins = this.props.insulins
-  //     return insulins.map(insulin=>{
-  //       return insulin.all_associated_entries.map(entryObj=>{
-  //           if (entryObj.status === 'active'){
-  //
-  //             return <TimerCard entryObj={entryObj} insulinObj={insulin} key={entryObj.id}/>
-  //           }else{
-  //             return null
-  //           }
-  //         }
-  // 
-  //   )
-  // })
+      const insulins = this.props.insulins
+
+      return insulins.map(insulin=>{
+        return insulin.all_associated_entries.map(entryObj=>{
+            if (entryObj.status === 'active'){
+
+              return <TimerCard entryObj={entryObj} insulinObj={insulin} key={entryObj.id}/>
+            }else{
+              return null
+            }
+          }
+
+    )
+
+  })
+
 }
 
   render(){
