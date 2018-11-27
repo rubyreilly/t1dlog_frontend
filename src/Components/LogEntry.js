@@ -35,6 +35,7 @@ class LogEntry extends Component{
       <td data-label="start-time">{formattedStartTime}</td>
       <td data-label="end_time">{formattedEndTime}</td>
       <td data-label="time_left">{entryObj.time_left}</td>
+      <td data-label="note">{entryObj.note}</td>
       <td data-label="status">{entryObj.status}</td>
       </tr>
     )
