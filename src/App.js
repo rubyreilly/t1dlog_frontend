@@ -3,6 +3,7 @@ import HomeContainer from './Components/HomeContainer'
 import NavBar from './Components/NavBar'
 import Header from './Components/Header'
 import TimerContainer from './Components/TimerContainer'
+
 import 'semantic-ui-css/semantic.min.css';
 
 import {connect} from 'react-redux'
@@ -26,6 +27,7 @@ class App extends Component {
       <NavBar/></div>
       <div className="column">
       <Header/></div></div>
+      
       <TimerContainer/>
       <HomeContainer/>
       </div>

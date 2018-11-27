@@ -33,14 +33,13 @@ class NewEntryForm extends Component{
     return this.props.insulins.map(insulin=><option>{insulin.insulin_name}</option>)
   }
 
-  // currentTime = ()=>{
-  //   return new Date()
-  // }
 
   render(){
 
     return(
-      <form className='ui form' id='newform' onSubmit={(e)=>this.handleSubmit(e)}>
+
+      <form className='ui form compact segment' id='newform' onSubmit={(e)=>this.handleSubmit(e)}>
+      <h3>new entry form</h3>
       <div className='fields'>
 
       <div className='field'>
@@ -52,10 +51,18 @@ class NewEntryForm extends Component{
 
       </div>
 
+
+
+      <div className="inline field">
+        <label>Note</label>
+        <textarea rows="2"></textarea>
+        </div>
       </div>
+
       <button>add to log</button>
 
       </form>
+
     )
   }
 }

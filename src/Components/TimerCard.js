@@ -16,7 +16,7 @@ class TimerCard extends Component{
 
       <h3>{insulinObj.insulin_name} timer</h3>
       <h1> {entryObj.time_left} of {formattedDuration} remaining</h1>
-      <h3>Administered: {formattedDate} {formattedStartTime}</h3>
+      <h3>Administered: {formattedDate} at {formattedStartTime}</h3>
 
       </div>
 
