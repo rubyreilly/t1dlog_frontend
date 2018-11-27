@@ -33,9 +33,9 @@ class LogEntry extends Component{
       <tr className={entryObj.status === "active" ? "ui inverted green table segment" : null}>
       <td data-label="date">{formattedDate}</td>
       <td data-label="start-time">{formattedStartTime}</td>
-      <td data-label="end_time">{formattedEndTime}</td>
+      <td data-label="end_time">{entryObj.status === "active" ? formattedEndTime : "-"}</td>
       <td data-label="time_left">{entryObj.time_left}</td>
-      <td data-label="note">{entryObj.note}</td>
+      <td data-label="note">{entryObj.note === "" || entryObj.note === null ? "-":entryObj.note}</td>
       <td data-label="status">{entryObj.status}</td>
       </tr>
     )
