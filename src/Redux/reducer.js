@@ -47,6 +47,18 @@ const reducer = (state = initialState, action) =>{
       return {...state, insulins: newInsulins}
     }
 
+    case("REMOVE_INSULIN"):{
+      const newInsulins = [...state.insulins].filter((insulin)=>{
+        return insulin !== action.payload
+          })
+      return {...state, insulins: newInsulins}
+    }
+
+    case("ADD_INSULIN"):{
+      const newInsulins = [...state.insulins, action.payload]
+      return {...state, insulins: newInsulins}
+    }
+
     default:
       return state
   }

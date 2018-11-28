@@ -24,17 +24,15 @@ class NavBar extends Component{
       </Link>
 
 
+      <Link to="/login">
+      <div className="item">
+      <i className="sign out alternate icon"></i>
+      Log out
+      </div>
+      </Link>
 
-      {localStorage.getItem("token") ? (
-        <div className="item" onClick={this.props.handleLogout}>
-        <i className="sign out alternate icon"></i>
-          Logout
-        </div>
-      ) : (
-        <Link to="/signup">
-          <div className="item">Login/Sign Up</div>
-        </Link>
-      )}
+
+      
 
       </div>
     )
