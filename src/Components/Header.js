@@ -5,8 +5,8 @@ class Header extends Component{
     return(
       <div>
       <h1 className="ui center aligned icon header">
-        <i className="syringe icon"></i>
-            T1DLog
+        <i className="hourglass half icon"></i>
+            DiaBase
             </h1>
 
       </div>
