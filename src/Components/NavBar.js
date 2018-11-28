@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import LoginForm from './LoginForm'
 
 class NavBar extends Component{
 
   render(){
     return(
-      <Router>
+
       <div className="ui compact vertical labeled menu">
 
       <Link to="/">
@@ -23,15 +23,20 @@ class NavBar extends Component{
       </div>
       </Link>
 
-      <Link to="/login">
-      <div className="item">
-      <i className="sign out alternate icon"></i>
-      Log Out
-      </div>
-      </Link>
+
+
+      {localStorage.getItem("token") ? (
+        <div className="item" onClick={this.props.handleLogout}>
+        <i className="sign out alternate icon"></i>
+          Logout
+        </div>
+      ) : (
+        <Link to="/signup">
+          <div className="item">Login/Sign Up</div>
+        </Link>
+      )}
 
       </div>
-      </Router>
     )
   }
 }

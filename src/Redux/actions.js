@@ -1,4 +1,8 @@
 //action creators here
+
+const setUser = (user)=>({type:'SET_USER', payload:user})
+
+
 const getInsulins = (insulins)=>({type:'GET_INSULINS', payload:insulins})
 
 export const selectInsulin = (insulin)=>({type:'SELECT_INSULIN', payload:insulin})
@@ -32,10 +36,6 @@ export const deleteEntry= (entryObj)=>{
       method: "DELETE",
     }
     return fetch(`http://localhost:3001/api/v1/users/${entryObj.user_id}/entries/${entryObj.id}`, options)
-    // .then(console.log())
-    // .then(res=>res.json())
-    // .then((res) => dispatch(removeEntry(res)))
-    // .catch(console.error)
   }
 }
 
@@ -46,5 +46,24 @@ export const fetchInsulins = (user)=>{
     .then(res=>res.json())
     .then((res)=>dispatch(getInsulins(res)))
     .catch(console.error)
+  }
+}
+
+//-----------------USER & AUTH-----------------------------//
+
+export const fetchCurrentUser = (token)=>{
+  return (dispatch)=>{
+    const options = {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: token
+      }}
+      return fetch(`http://localhost:3001/api/v1/current_user`, options)
+      .then(res => res.json())
+      // .then(res=>console.log(res))
+      .then((user)=>dispatch(setUser(user)))
+      .catch(console.error)
+
   }
 }

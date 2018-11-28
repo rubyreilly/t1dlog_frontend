@@ -1,12 +1,19 @@
 const initialState = {
-  // users:[],
-  user:1,
+  auth: { currentUser: {user_id:1,username:'kt', password:'password'} },
+
   insulins:[],
   selectedInsulin: 4
 }
 
 const reducer = (state = initialState, action) =>{
   switch (action.type){
+    case("SET_USER"):{
+
+      const currentUser = { currentUser: action.payload }
+      console.log("CURRENT USER:", currentUser)
+      return {...state, auth:{currentUser}}
+
+    }
     case("GET_INSULINS"):{
       return {...state, insulins:action.payload}
     }

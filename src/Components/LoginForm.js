@@ -14,9 +14,6 @@ class LoginForm extends Component{
     }, ()=>console.log(this.state))
   }
 
-  handleSubmit=(e)=>{
-    e.preventDefault()
-  }
 
 
 
@@ -25,7 +22,7 @@ class LoginForm extends Component{
 
       <div className = "ui center aligned green segment">
       <h1>Login</h1>
-      <form className="ui form" onSubmit={(e)=>this.handleSubmit(e)}>
+      <form className="ui form" onSubmit={e=>this.props.handleLogin(e, this.state)}>
 
       <div className= "inline field">
       <label>username:</label>
