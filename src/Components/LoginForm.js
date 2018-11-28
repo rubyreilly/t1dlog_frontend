@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import {connect} from 'react-redux'
-// import {selectUser} from '../Redux/actions'
+import {connect} from 'react-redux'
+import {setUser} from '../Redux/actions'
 
 class LoginForm extends Component{
   state={
@@ -14,15 +14,19 @@ class LoginForm extends Component{
     }, ()=>console.log(this.state))
   }
 
-
-
+  handleLogin=(e)=>{
+    e.preventDefault()
+    // console.log(this.props.users)
+    // const user = this.props.users.filter((user)=>user.username === this.state.username)
+    // this.props.selectUser(user)
+  }
 
   render(){
     return(
 
       <div className = "ui center aligned green segment">
       <h1>Login</h1>
-      <form className="ui form" onSubmit={e=>this.props.handleLogin(e, this.state)}>
+      <form className="ui form" onSubmit={e=>this.handleLogin(e)}>
 
       <div className= "inline field">
       <label>username:</label>
@@ -43,19 +47,19 @@ class LoginForm extends Component{
   }
 }
 
-// const mapStateToProps= (state)=>{
-//   return {
-//     users: state.users
-//   }
-// }
-//
-//
-// const mapDispatchToProps=(dispatch)=>{
-//   return{
-//     selectUser:(user)=>dispatch(selectUser(user)),
-//   }
-// }
-//
-//
-// export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
-export default LoginForm
+const mapStateToProps= (state)=>{
+  return {
+    users: state.users
+  }
+}
+
+
+const mapDispatchToProps=(dispatch)=>{
+  return{
+    setUser:(user)=>dispatch(setUser(user)),
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
+// export default LoginForm

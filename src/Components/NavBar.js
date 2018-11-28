@@ -31,9 +31,6 @@ class NavBar extends Component{
       </div>
       </Link>
 
-
-      
-
       </div>
     )
   }
