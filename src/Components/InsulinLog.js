@@ -24,6 +24,7 @@ class InsulinLog extends Component{
           <th>Time Left</th>
           <th>Note</th>
           <th>Status</th>
+          <th>Buttons</th>
           </tr>
         </thead>
       <tbody>

@@ -4,7 +4,7 @@ import HomeContainer from './Components/HomeContainer'
 // import Header from './Components/Header'
 // import TimerContainer from './Components/TimerContainer'
 import LoginForm from './Components/LoginForm'
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import 'semantic-ui-css/semantic.min.css';
 
