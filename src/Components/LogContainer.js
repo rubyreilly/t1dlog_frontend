@@ -6,12 +6,11 @@ import InsulinLog from './InsulinLog'
 
 
 class LogContainer extends Component{
-  // componentDidMount(){
-  //   this.props.fetchInsulins()
-  // }
 
   generateTabs=(insulins)=>{
+
     return insulins.map(insulinObj=>{
+
       return <div className={this.props.selectedInsulin === insulinObj.id ? "active item":"item"}
       onClick={()=> this.props.selectInsulin(insulinObj.id)}>
       {insulinObj.insulin_name}
@@ -24,6 +23,7 @@ class LogContainer extends Component{
     return(
       <div id='log'>
       <div className="ui top attached tabular menu">
+
         {this.generateTabs(this.props.insulins)}
       </div>
       <InsulinLog/>
