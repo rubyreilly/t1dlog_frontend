@@ -1,4 +1,5 @@
 const initialState = {
+  // users:[],
   user:1,
   insulins:[],
   selectedInsulin: 4
@@ -12,6 +13,13 @@ const reducer = (state = initialState, action) =>{
     case("SELECT_INSULIN"):{
       return {...state, selectedInsulin: action.payload}
     }
+    // case("GET_USERS"):{
+    //   return {...state, users:action.payload}
+    // }
+    // case("SELECT_USER"):{
+    //   console.log('this is the user', state.user)
+    //   return {...state, user: action.payload}
+    // }
     case("ADD_ENTRY"):{
       const newInsulins = [...state.insulins].map((insulin)=>{
         if (insulin.id === action.payload.insulin_id){
