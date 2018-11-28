@@ -21,7 +21,7 @@ class LogEntry extends Component{
 
   render(){
     const {entryObj}=this.props
-    const formattedDate = moment(entryObj.entry_date_and_time).format('dddd ll')
+    const formattedDate = moment(entryObj.entry_date_and_time).format('dddd MMMM Do')
     const formattedStartTime = moment(entryObj.entry_date_and_time).format('LT')
     const formattedEndTime = moment(this.calculateEndTime(entryObj.entry_date_and_time)).calendar()
 

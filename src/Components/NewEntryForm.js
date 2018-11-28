@@ -40,7 +40,7 @@ class NewEntryForm extends Component{
 
     return(
 
-      <form className='ui form compact segment' id='newform' onSubmit={(e)=>this.handleSubmit(e)}>
+      <form className='ui form compact green segment' id='newform' onSubmit={(e)=>this.handleSubmit(e)}>
       <h3>new entry form</h3>
       <div className='fields'>
 

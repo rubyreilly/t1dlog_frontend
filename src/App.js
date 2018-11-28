@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import HomeContainer from './Components/HomeContainer'
-// import NavBar from './Components/NavBar'
-// import Header from './Components/Header'
-// import TimerContainer from './Components/TimerContainer'
+import NavBar from './Components/NavBar'
+import Header from './Components/Header'
 import LoginForm from './Components/LoginForm'
+import AccountForm from './Components/AccountForm'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import 'semantic-ui-css/semantic.min.css';
@@ -24,15 +24,27 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
 
-        <Switch>
-          <Route path="/login" component={LoginForm} />
-          <Route path="/" component={HomeContainer} />
-        </Switch>
+      <div>
 
+        <div className="ui three column grid">
+          <div className="column">
+            <NavBar/>
+          </div>
+        <div className="column">
+          <Header/>
+        </div>
+      </div>
 
-      </Router>
+        <Router>
+          <Switch>
+            <Route path="/login" component={LoginForm} />
+            <Route path="/account" component={AccountForm} />
+            <Route path="/" component={HomeContainer} />
+          </Switch>
+        </Router>
+
+      </div>
     );
   }
 }

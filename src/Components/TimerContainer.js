@@ -22,7 +22,9 @@ class TimerContainer extends Component{
 
   render(){
     return(
-      <div id='log'>
+
+      <div className="ui two column grid" id='log'>
+
       {this.generateTimerCards()}
       </div>
     )
