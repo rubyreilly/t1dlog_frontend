@@ -13,10 +13,12 @@ class MyInsulins extends Component{
 
   render(){
     return(
-      <div className="ui center aligned violet compact segment">
+      <div className="ui center aligned violet segment">
       <h1>My Insulins</h1>
-      {this.generateInsulinCards()}
+      <div className="ui two column grid">
 
+      {this.generateInsulinCards()}
+      </div>
       </div>
     )
   }

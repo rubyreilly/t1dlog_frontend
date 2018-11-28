@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
+import {postInsulin} from '../Redux/actions'
 
 class InsulinForm extends Component{
 
   state={
     insulinName:'',
-    duration:0
+    duration:''
   }
 
   handleChange=(e)=>{
@@ -15,6 +17,15 @@ class InsulinForm extends Component{
 
   handleSubmit=(e)=>{
     e.preventDefault()
+    const newInsulin = {
+      user_id: this.props.user,
+      insulin_name: this.state.insulinName,
+      insulin_duration_in_minutes : parseInt(this.state.duration)*60}
+    this.props.postInsulin(newInsulin)
+    this.setState({
+      insulinName: '',
+      duration:''
+    })
   }
 
 
@@ -35,6 +46,7 @@ class InsulinForm extends Component{
       <div className= "inline field">
       <label>duration:</label>
       <input name='duration' value={this.state.duration} onChange={(e)=>this.handleChange(e)}></input>
+      <label> hours</label>
       </div>
 
       <button>add insulin</button>
@@ -45,5 +57,16 @@ class InsulinForm extends Component{
   }
 }
 
+const mapStateToProps=(state)=>{
+  return{
+    user:state.auth.currentUser.user_id}
+}
 
-export default InsulinForm
+const mapDispatchToProps=(dispatch)=>{
+  return{
+    postInsulin:(newInsulin)=>dispatch(postInsulin(newInsulin)),
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(InsulinForm)

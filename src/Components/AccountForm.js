@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import InsulinForm from './InsulinForm'
 import MyInsulins from './MyInsulins'
+// import {connect} from 'react-redux'
+
+
 
 class AccountForm extends Component{
 
@@ -23,12 +26,14 @@ class AccountForm extends Component{
   }
 
 
+  // {localStorage.getItem("token")
+  //   ? render everything : this.props.history.push("/signup")}
+
 
   render(){
     return(
       <div>
-      {localStorage.getItem("token")
-        ?
+
         <div className="ui two column grid">
         <div className="column">
 
@@ -46,7 +51,7 @@ class AccountForm extends Component{
       <input name='password' value={this.state.password} onChange={(e)=>this.handleChange(e)}></input>
       </div>
 
-
+      <button>update</button>
       </form>
       </div>
 
@@ -62,13 +67,20 @@ class AccountForm extends Component{
       </div>
 
 
-      : this.props.history.push("/signup")}
+
       </div>
     )
 
   }
 
 }
+
+// const mapStateToProps=(state)=>{
+//   return{
+//     user:state.auth.currentUser.user_id}
+// }
+//
+//
 
 
 export default AccountForm

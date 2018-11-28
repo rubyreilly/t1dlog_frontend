@@ -7,11 +7,45 @@ const getInsulins = (insulins)=>({type:'GET_INSULINS', payload:insulins})
 
 export const selectInsulin = (insulin)=>({type:'SELECT_INSULIN', payload:insulin})
 
+const addInsulin = (insulin)=>({type:'ADD_INSULIN', payload:insulin})
+
+export const removeInsulin = (insulin)=>({type:'REMOVE_INSULIN', payload:insulin})
+
 const addEntry = (entry)=>({type:'ADD_ENTRY', payload:entry})
 
 export const removeEntry = (entry)=>({type:'REMOVE_ENTRY', payload:entry})
 
 //thunk creators here
+
+//--------------INSULINS------------//
+export const postInsulin= (newInsulin)=>{
+  return (dispatch)=>{
+    const options = {
+      method: "POST",
+      body: JSON.stringify(newInsulin),
+      headers:{
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }
+    return fetch(`http://localhost:3001/api/v1/users/${newInsulin.user_id}/insulins`, options)
+    .then(res=>res.json())
+    .then((res) => dispatch(addInsulin(res)))
+    .catch(console.error)
+  }
+}
+
+export const deleteInsulin= (insulinObj)=>{
+  return (dispatch)=>{
+    const options = {
+      method: "DELETE",
+    }
+    return fetch(`http://localhost:3001/api/v1/users/${insulinObj.user_id}/insulins/${insulinObj.id}`, options)
+  }
+}
+
+
+//---------------ENTRY-----------------//
 
 export const postEntry= (newEntry)=>{
   return (dispatch)=>{
@@ -29,6 +63,7 @@ export const postEntry= (newEntry)=>{
     .catch(console.error)
   }
 }
+
 
 export const deleteEntry= (entryObj)=>{
   return (dispatch)=>{

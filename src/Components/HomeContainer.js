@@ -5,8 +5,8 @@ import TimerContainer from './TimerContainer'
 // import Header from './Header'
 // import NavBar from './NavBar'
 
-import {connect} from 'react-redux'
-import {fetchInsulins} from '../Redux/actions'
+// import {connect} from 'react-redux'
+// import {fetchInsulins} from '../Redux/actions'
 
 
 
@@ -17,8 +17,8 @@ class HomeContainer extends Component{
     // localStorage.getItem("token")
     //   ? this.props.fetchInsulins(this.props.user)
     //   : this.props.history.push("/signup");
-    console.log("THIS IS USER:", this.props.user)
-    this.props.fetchInsulins(this.props.user)
+    // console.log("THIS IS USER:", this.props.user)
+    // this.props.fetchInsulins(this.props.user)
   }
 
   render(){
@@ -34,15 +34,15 @@ class HomeContainer extends Component{
   }
 }
 
-const mapStateToProps=(state)=>{
-  return{user:state.auth.currentUser.user_id}
-}
+// const mapStateToProps=(state)=>{
+//   return{user:state.auth.currentUser.user_id}
+// }
+//
+// const mapDispatchToProps=(dispatch)=>{
+//   return{
+//     fetchInsulins:(user)=>dispatch(fetchInsulins(user))
+//   }
+// }
 
-const mapDispatchToProps=(dispatch)=>{
-  return{
-    fetchInsulins:(user)=>dispatch(fetchInsulins(user))
-  }
-}
 
-
-export default connect(mapStateToProps,mapDispatchToProps)(HomeContainer)
+export default HomeContainer

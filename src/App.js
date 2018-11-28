@@ -11,7 +11,7 @@ import { BrowserRouter, Route, Switch} from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css';
 
 import {connect} from 'react-redux'
-import {fetchCurrentUser} from './Redux/actions'
+import {fetchInsulins, fetchCurrentUser} from './Redux/actions'
 
 
 
@@ -29,14 +29,17 @@ class App extends Component {
 
 
   componentDidMount=()=>{
-    const token = localStorage.getItem("token");
-    if (token) {
-      console.log(token)
-      // this.props.fetchCurrentUser(token)
-    }
-    else{
-      console.log("no token")
-    }
+    this.props.fetchInsulins(this.props.user)
+
+
+    // const token = localStorage.getItem("token");
+    // if (token) {
+    //   console.log(token)
+    //   // this.props.fetchCurrentUser(token)
+    // }
+    // else{
+    //   console.log("no token")
+    // }
   }
 
   handleLogout = () => {
@@ -126,13 +129,24 @@ class App extends Component {
   }
 }
 
+const mapStateToProps=(state)=>{
+  return{user:state.auth.currentUser.user_id}
+}
+
 const mapDispatchToProps=(dispatch)=>{
   return{
-    fetchCurrentUser:(token)=>dispatch(fetchCurrentUser(token))
+    fetchInsulins:(user)=>dispatch(fetchInsulins(user))
   }
 }
 
+// const mapDispatchToProps=(dispatch)=>{
+//   return{
+//     fetchCurrentUser:(token)=>dispatch(fetchCurrentUser(token))
+//
+//   }
+// }
 
 
 
-export default connect(null, mapDispatchToProps)(App)
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

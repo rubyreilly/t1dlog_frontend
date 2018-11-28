@@ -29,6 +29,10 @@ class NewEntryForm extends Component{
       status: 'active',
       note: this.state.note}
     this.props.postEntry(newEntry)
+    this.setState({
+      insulin: '',
+      note:''
+    })
   }
 
   generateInsulinDropDown=()=>{
