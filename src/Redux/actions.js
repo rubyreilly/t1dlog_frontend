@@ -1,6 +1,8 @@
 //action creators here
 
-const setUser = (user)=>({type:'SET_USER', payload:user})
+export const setUser = (user)=>({type:'SET_USER', payload:user})
+
+const getUsers = (users)=>({type:'GET_USERS', payload:users})
 
 
 const getInsulins = (insulins)=>({type:'GET_INSULINS', payload:insulins})
@@ -18,6 +20,17 @@ export const removeEntry = (entry)=>({type:'REMOVE_ENTRY', payload:entry})
 //thunk creators here
 
 //--------------INSULINS------------//
+export const fetchInsulins = (user)=>{
+  return (dispatch)=>{
+    return fetch(`http://localhost:3001/api/v1/users/${user}/insulins`)
+    .then(res=>res.json())
+    .then((res)=>dispatch(getInsulins(res)))
+    .catch(console.error)
+  }
+}
+
+
+
 export const postInsulin= (newInsulin)=>{
   return (dispatch)=>{
     const options = {
@@ -75,16 +88,20 @@ export const deleteEntry= (entryObj)=>{
 }
 
 
-export const fetchInsulins = (user)=>{
+
+
+//-----------------USER & AUTH-----------------------------//
+
+export const fetchUsers = ()=>{
   return (dispatch)=>{
-    return fetch(`http://localhost:3001/api/v1/users/${user}/insulins`)
+    return fetch(`http://localhost:3001/api/v1/users`)
     .then(res=>res.json())
-    .then((res)=>dispatch(getInsulins(res)))
+    .then((res)=>dispatch(getUsers(res)))
     .catch(console.error)
   }
 }
 
-//-----------------USER & AUTH-----------------------------//
+
 
 export const fetchCurrentUser = (token)=>{
   return (dispatch)=>{

@@ -1,4 +1,5 @@
 const initialState = {
+  users:[],
   auth: { currentUser: {user_id:1,username:'kt', password:'password'} },
   insulins:[],
   selectedInsulin:4
@@ -6,6 +7,9 @@ const initialState = {
 
 const reducer = (state = initialState, action) =>{
   switch (action.type){
+    case("GET_USERS"):{
+      return {...state, users:action.payload}
+    }
 
     case("SET_USER"):{
       const currentUser = { currentUser: action.payload }

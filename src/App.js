@@ -11,7 +11,7 @@ import { BrowserRouter, Route, Switch} from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css';
 
 import {connect} from 'react-redux'
-import {fetchInsulins, fetchCurrentUser} from './Redux/actions'
+import {fetchInsulins, fetchUsers} from './Redux/actions'
 
 
 
@@ -29,6 +29,7 @@ class App extends Component {
 
 
   componentDidMount=()=>{
+    this.props.fetchUsers()
     this.props.fetchInsulins(this.props.user)
 
 
@@ -67,24 +68,24 @@ class App extends Component {
   };
 
 
-  handleLogin = () => {
-  fetch("http://localhost:3001/api/v1/users", {
-  method: "POST",
-  headers: {
-   "Content-Type": "application/json",
-   Accept: "application/json"
-  },
-  body: JSON.stringify({
-   user: {
-     username: this.state.username,
-     password: this.state.password
-   }
-  })
-  })
-  .then(resp => resp.json())
-  .then(resp => localStorage.setItem("token", resp.token))
+  // handleLogin = () => {
+  // fetch("http://localhost:3001/api/v1/users", {
+  // method: "POST",
+  // headers: {
+  //  "Content-Type": "application/json",
+  //  Accept: "application/json"
+  // },
+  // body: JSON.stringify({
+  //  user: {
+  //    username: this.state.username,
+  //    password: this.state.password
+  //  }
+  // })
+  // })
+  // .then(resp => resp.json())
+  // .then(resp => localStorage.setItem("token", resp.token))
   // resp => localStorage.setItem("token", resp.token)
-  };
+  // };
 
 
 
@@ -135,6 +136,7 @@ const mapStateToProps=(state)=>{
 
 const mapDispatchToProps=(dispatch)=>{
   return{
+    fetchUsers:()=>dispatch(fetchUsers()),
     fetchInsulins:(user)=>dispatch(fetchInsulins(user))
   }
 }
