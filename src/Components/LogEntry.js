@@ -9,25 +9,13 @@ class LogEntry extends Component{
     return moment(start).add(duration, 'minutes').format()
   }
 
-  // calculateTimeLeft=(end)=>{
-  //   const now = moment(new Date()).format()
-  //   console.log(moment(end).subtract(now).format("h[h] m[m]"))
-  //
-  //
-  // }
-
 
   render(){
     const {entryObj}=this.props
-
     const formattedDate = moment(entryObj.entry_date_and_time).format('dddd ll')
     const formattedStartTime = moment(entryObj.entry_date_and_time).format('LT')
     const formattedEndTime = moment(this.calculateEndTime(entryObj.entry_date_and_time)).calendar()
-    // const formattedTimeLeft = this.calculateTimeLeft(endTime)
 
-    // const datetime = new Date(entryObj.entry_date_and_time)
-    // const formattedDate = datetime.toDateString()
-    // const formattedStartTime = datetime.toLocaleTimeString('en-US')
 
     return(
       <tr className={entryObj.status === "active" ? "ui inverted green table segment" : null}>

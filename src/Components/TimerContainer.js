@@ -16,12 +16,9 @@ class TimerContainer extends Component{
               return null
             }
           }
-
-    )
-
-  })
-
-}
+          )
+        })
+      }
 
   render(){
     return(
