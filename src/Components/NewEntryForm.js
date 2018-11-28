@@ -69,11 +69,12 @@ class NewEntryForm extends Component{
   }
 }
 
-const mapStateToProps= (state)=>{
-  return {
+
+
+const mapStateToProps=(state)=>{
+  return{
     insulins: state.insulins,
-    user: state.user
-  }
+    user:state.auth.currentUser.user_id}
 }
 
 const mapDispatchToProps=(dispatch)=>{

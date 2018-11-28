@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import InsulinForm from './InsulinForm'
 import MyInsulins from './MyInsulins'
 
-class AccountForm extends Component{
-
-
+class SignUp extends Component{
 
   state={
     username:'',
@@ -18,22 +16,40 @@ class AccountForm extends Component{
     }, ()=>console.log(this.state))
   }
 
+
+  handleSignUp = () => {
+  fetch("http://localhost:3001/api/v1/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify({
+      user: {
+        username: this.state.username,
+        password: this.state.password
+      }
+    })
+  })
+    .then(resp => resp.json())
+    .then(resp => localStorage.setItem("token", resp.token));
+  // resp => localStorage.setItem("token", resp.token)
+};
+
+
   handleSubmit=(e)=>{
-    e.preventDefault()
+    e.preventDefault();
+     this.handleSignUp();
+     this.props.history.push("/home");
   }
 
 
 
   render(){
     return(
-      <div>
-      {localStorage.getItem("token")
-        ?
-        <div className="ui two column grid">
-        <div className="column">
 
         <div className="ui center aligned green  segment">
-     <h1>Edit Account Info</h1>
+     <h1>Sign Up</h1>
       <form className="ui form" onSubmit={(e)=>this.handleSubmit(e)}>
 
       <div className= "inline field">
@@ -45,30 +61,14 @@ class AccountForm extends Component{
       <label>password:</label>
       <input name='password' value={this.state.password} onChange={(e)=>this.handleChange(e)}></input>
       </div>
-
+      <button>Sign Up</button>
 
       </form>
       </div>
 
-      </div>
-
-      <div className="column">
-
-      <InsulinForm/>
-      <MyInsulins/>
-      </div>
-
-
-      </div>
-
-
-      : this.props.history.push("/signup")}
-      </div>
     )
-
   }
-
 }
 
 
-export default AccountForm
+export default SignUp

@@ -7,9 +7,9 @@ class InsulinCard extends Component{
   render(){
     const formattedDuration= moment.duration(this.props.insulinObj.insulin_duration_in_minutes, "minutes").format("h")
     return(
-      <div className="ui center aligned blue segment">
+      <div className="ui center aligned blue compact segment">
       <p>{this.props.insulinObj.insulin_name}</p>
-      <p>{formattedDuration} hours</p>
+      <p>{formattedDuration} hour duration</p>
       </div>
     )
   }
