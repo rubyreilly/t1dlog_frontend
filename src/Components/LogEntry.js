@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import moment from 'moment'
+import {connect} from 'react-redux'
+import {deleteEntry, removeEntry} from '../Redux/actions'
+
 
 
 class LogEntry extends Component{
@@ -7,6 +10,12 @@ class LogEntry extends Component{
   calculateEndTime=(start)=>{
     const duration = this.props.insulinObj.insulin_duration_in_minutes
     return moment(start).add(duration, 'minutes').format()
+  }
+
+  handleDelete=(e)=>{
+    this.props.removeEntry(this.props.entryObj)
+    this.props.deleteEntry(this.props.entryObj)
+
   }
 
 
@@ -25,9 +34,17 @@ class LogEntry extends Component{
       <td data-label="time_left">{entryObj.time_left}</td>
       <td data-label="note">{entryObj.note === "" || entryObj.note === null ? "-":entryObj.note}</td>
       <td data-label="status">{entryObj.status}</td>
+      <td><button onClick={(e)=>this.handleDelete(e)}>delete</button></td>
       </tr>
     )
   }
 }
 
-export default LogEntry
+const mapDispatchToProps=(dispatch)=>{
+  return{
+    deleteEntry:(entryObj)=>dispatch(deleteEntry(entryObj)),
+    removeEntry:(entryObj)=>dispatch(removeEntry(entryObj))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(LogEntry)

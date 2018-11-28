@@ -13,13 +13,20 @@ const reducer = (state = initialState, action) =>{
     case("SELECT_INSULIN"):{
       return {...state, selectedInsulin: action.payload}
     }
-    // case("GET_USERS"):{
-    //   return {...state, users:action.payload}
-    // }
-    // case("SELECT_USER"):{
-    //   console.log('this is the user', state.user)
-    //   return {...state, user: action.payload}
-    // }
+    case("REMOVE_ENTRY"):{
+      const newInsulins = [...state.insulins].map((insulin)=>{
+        if (insulin.id === action.payload.insulin_id){
+          const newEntries = [...insulin.all_associated_entries].filter((entry)=>{
+            return entry !== action.payload
+          })
+          return {...insulin, all_associated_entries: newEntries}
+        }else{
+          return {...insulin}
+        }
+      }
+    )
+      return {...state, insulins: newInsulins}
+    }
     case("ADD_ENTRY"):{
       const newInsulins = [...state.insulins].map((insulin)=>{
         if (insulin.id === action.payload.insulin_id){
@@ -28,10 +35,9 @@ const reducer = (state = initialState, action) =>{
         }else{
           return {...insulin}
         }
-    })
-
+      }
+    )
       return {...state, insulins: newInsulins}
-
     }
 
     default:

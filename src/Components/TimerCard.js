@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment'
 import {momentDurationFormatSetup} from 'moment-duration-format'
 
+
 class TimerCard extends Component{
   render(){
     const entryObj = this.props.entryObj
