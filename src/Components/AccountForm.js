@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-// import {connect} from 'react-redux'
-// import {selectUser} from '../Redux/actions'
+import InsulinForm from './InsulinForm'
+import MyInsulins from './MyInsulins'
 
-class LoginForm extends Component{
+class AccountForm extends Component{
+
   state={
     username:'',
     password:''
+
   }
 
   handleChange=(e)=>{
@@ -22,9 +24,11 @@ class LoginForm extends Component{
 
   render(){
     return(
+      <div className="ui two column grid">
+        <div className="column">
 
-      <div className = "ui center aligned green segment">
-      <h1>Login</h1>
+        <div className="ui center aligned green  segment">
+     <h1>Edit Account Info</h1>
       <form className="ui form" onSubmit={(e)=>this.handleSubmit(e)}>
 
       <div className= "inline field">
@@ -37,28 +41,27 @@ class LoginForm extends Component{
       <input name='password' value={this.state.password} onChange={(e)=>this.handleChange(e)}></input>
       </div>
 
-      <button>login</button>
+
       </form>
       </div>
 
 
+
+
+
+      </div>
+
+      <div className="column">
+
+      <InsulinForm/>
+      <MyInsulins/>
+      </div>
+
+
+      </div>
     )
   }
 }
 
-// const mapStateToProps= (state)=>{
-//   return {
-//     users: state.users
-//   }
-// }
-//
-//
-// const mapDispatchToProps=(dispatch)=>{
-//   return{
-//     selectUser:(user)=>dispatch(selectUser(user)),
-//   }
-// }
-//
-//
-// export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
-export default LoginForm
+
+export default AccountForm
