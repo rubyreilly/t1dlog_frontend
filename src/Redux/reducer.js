@@ -1,29 +1,49 @@
 const initialState = {
-  users:[],
-  auth: { currentUser: {id:'',username:''} },
+  auth: { currentUser: {id:''} },
   insulins:[],
   selectedInsulin: ''
 }
 
 const reducer = (state = initialState, action) =>{
   switch (action.type){
-    case("GET_USERS"):{
-      return {...state, users:action.payload}
-    }
 
     case("SET_USER"):{
-      const currentUser = { currentUser: action.payload }
-      console.log("CURRENT USER:", currentUser)
-      return {...state, auth:currentUser}
-    }
+      console.log(action.payload)
+      const currentUser = { currentUser: action.payload.id }
+      let defaultInsulin = ''
+      if (action.payload.insulins_info[0] !== undefined){
+        let defaultInsulin = action.payload.insulins_info[0].id
+      }
+      return {...state,
+        auth:currentUser,
+        insulins: action.payload.insulins_info,
+        selectedInsulin: defaultInsulin
+      }
 
-    case("GET_INSULINS"):{
-      console.log("SHOULD BE INS", action.payload)
-      return {...state, insulins:action.payload}
     }
+    // case("ADD_USER"):{
+    //   const newUsers = [...state.users, action.payload]
+    //   return {...state, users: newUsers}
+    // }
+
+
     case("SELECT_INSULIN"):{
       return {...state, selectedInsulin: action.payload}
     }
+    case("REMOVE_INSULIN"):{
+      const newInsulins = [...state.insulins].filter((insulin)=>{
+        return insulin !== action.payload
+          })
+      return {...state, insulins: newInsulins}
+    }
+    case("ADD_INSULIN"):{
+      const newInsulins = [...state.insulins, action.payload]
+      return {...state, insulins: newInsulins}
+    }
+
+
+
+
     case("REMOVE_ENTRY"):{
       const newInsulins = [...state.insulins].map((insulin)=>{
         if (insulin.id === action.payload.insulin_id){
@@ -51,17 +71,7 @@ const reducer = (state = initialState, action) =>{
       return {...state, insulins: newInsulins}
     }
 
-    case("REMOVE_INSULIN"):{
-      const newInsulins = [...state.insulins].filter((insulin)=>{
-        return insulin !== action.payload
-          })
-      return {...state, insulins: newInsulins}
-    }
 
-    case("ADD_INSULIN"):{
-      const newInsulins = [...state.insulins, action.payload]
-      return {...state, insulins: newInsulins}
-    }
 
     default:
       return state

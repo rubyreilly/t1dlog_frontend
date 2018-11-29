@@ -1,11 +1,16 @@
 //action creators here
 
-export const setUser = (user)=>({type:'SET_USER', payload:user})
+//------------------user action creators--------------------//
 
-const getUsers = (users)=>({type:'GET_USERS', payload:users})
+const setUser = (user)=>({type:'SET_USER', payload:user})
+//
+// const getUsers = (users)=>({type:'GET_USERS', payload:users})
 
+// const addUser = (user)=>({type:'ADD_USER', payload:user})
 
-const getInsulins = (insulins)=>({type:'GET_INSULINS', payload:insulins})
+//------------------insulin action creators--------------------//
+
+// const getInsulins = (insulins)=>({type:'GET_INSULINS', payload:insulins})
 
 export const selectInsulin = (insulin)=>({type:'SELECT_INSULIN', payload:insulin})
 
@@ -13,22 +18,25 @@ const addInsulin = (insulin)=>({type:'ADD_INSULIN', payload:insulin})
 
 export const removeInsulin = (insulin)=>({type:'REMOVE_INSULIN', payload:insulin})
 
+
+//------------------entry action creators--------------------//
+
 const addEntry = (entry)=>({type:'ADD_ENTRY', payload:entry})
 
 export const removeEntry = (entry)=>({type:'REMOVE_ENTRY', payload:entry})
 
 //thunk creators here
 
-//--------------INSULINS------------//
-export const fetchInsulins = (user)=>{
-  return (dispatch)=>{
-    console.log(user)
-    return fetch(`http://localhost:3001/api/v1/users/${user}/insulins`)
-    .then(res=>res.json())
-    .then((res)=>dispatch(getInsulins(res)))
-    .catch(console.error)
-  }
-}
+//------------------insulin thunk creators--------------------//
+
+// export const fetchInsulins = (user)=>{
+//   return (dispatch)=>{
+//     return fetch(`http://localhost:3001/api/v1/users/${user}/insulins`)
+//     .then(res=>res.json())
+//     .then((res)=>dispatch(getInsulins(res)))
+//     .catch(console.error)
+//   }
+// }
 
 
 
@@ -49,6 +57,8 @@ export const postInsulin= (newInsulin)=>{
   }
 }
 
+
+
 export const deleteInsulin= (insulinObj)=>{
   return (dispatch)=>{
     const options = {
@@ -59,7 +69,7 @@ export const deleteInsulin= (insulinObj)=>{
 }
 
 
-//---------------ENTRY-----------------//
+//---------------entry thunk creators-----------------//
 
 export const postEntry= (newEntry)=>{
   return (dispatch)=>{
@@ -91,32 +101,43 @@ export const deleteEntry= (entryObj)=>{
 
 
 
-//-----------------USER & AUTH-----------------------------//
+//-----------------user thunk creators-----------------------------//
 
-export const fetchUsers = ()=>{
+
+
+export const fetchUser = (name)=>{
   return (dispatch)=>{
-    return fetch(`http://localhost:3001/api/v1/users`)
+    const options={
+      method: "POST",
+      body: JSON.stringify({user:{username: name}}),
+      headers:{
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }
+    return fetch(`http://localhost:3001/api/v1/login`, options)
     .then(res=>res.json())
-    .then((res)=>dispatch(getUsers(res)))
+    // .then(res=>console.log(res.user))
+    .then((res)=>dispatch(setUser(res.user)))
     .catch(console.error)
   }
 }
 
 
-
-// export const fetchCurrentUser = (token)=>{
+// export const postNewUser = (name)=>{
 //   return (dispatch)=>{
 //     const options = {
-//       headers: {
-//         "Content-Type": "application/json",
-//         Accept: "application/json",
-//         Authorization: token
-//       }}
-//       return fetch(`http://localhost:3001/api/v1/current_user`, options)
-//       .then(res => res.json())
-//       // .then(res=>console.log(res))
-//       .then((user)=>dispatch(setUser(user)))
-//       .catch(console.error)
-//
-//   }
+//       method: "POST",
+//       body: JSON.stringify({user:{username:name}}),
+//       headers:{
+//         'Content-Type': 'application/json',
+//         'Accept': 'application/json'
+//       }
+//     }
+//     return fetch(`http://localhost:3001/api/v1/users`, options)
+//     .then(res=>res.json())
+//     .then((res) => dispatch(addUser(res)))
+//     .catch(console.error)
+
+  // }
 // }

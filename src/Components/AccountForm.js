@@ -23,6 +23,7 @@ class AccountForm extends Component{
   }
 
 
+
   // {localStorage.getItem("token")
   //   ? render everything : this.props.history.push("/signup")}
 
@@ -61,8 +62,7 @@ class AccountForm extends Component{
 //   return{
 //     user:state.auth.currentUser.user_id}
 // }
-//
-//
+
 
 
 export default AccountForm
