@@ -11,7 +11,7 @@ import { BrowserRouter, Route, Switch} from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css';
 
 import {connect} from 'react-redux'
-import {fetchInsulins, fetchUsers} from './Redux/actions'
+import {fetchUsers} from './Redux/actions'
 
 
 
@@ -30,7 +30,7 @@ class App extends Component {
 
   componentDidMount=()=>{
     this.props.fetchUsers()
-    this.props.fetchInsulins(this.props.user)
+    // this.props.fetchInsulins(this.props.user)
 
 
     // const token = localStorage.getItem("token");
@@ -114,13 +114,17 @@ class App extends Component {
           path="/signup"
           render={props => <SignUp handleSignUp={this.handleSignUp} />}
         />
-        <Route
-          path="/login"
-            render={props => <LoginForm handleLogin={this.handleLogin} />}
-          />
+
 
             <Route path="/account" component={AccountForm} />
-            <Route path="/" component={HomeContainer} />
+            <Route path="/home" component={HomeContainer} />
+
+
+
+            <Route
+              path="/"
+                render={props => <LoginForm handleLogin={this.handleLogin} />}
+              />
           </Switch>
 
       </div>
@@ -137,7 +141,7 @@ const mapStateToProps=(state)=>{
 const mapDispatchToProps=(dispatch)=>{
   return{
     fetchUsers:()=>dispatch(fetchUsers()),
-    fetchInsulins:(user)=>dispatch(fetchInsulins(user))
+    // fetchInsulins:(user)=>dispatch(fetchInsulins(user))
   }
 }
 

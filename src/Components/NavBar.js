@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import LoginForm from './LoginForm'
+// import LoginForm from './LoginForm'
 
 class NavBar extends Component{
 
@@ -9,7 +9,7 @@ class NavBar extends Component{
 
       <div className="ui compact vertical labeled menu">
 
-      <Link to="/">
+      <Link to="/home">
       <div className="active item">
       <i className="home icon"></i>
       Home
@@ -24,7 +24,7 @@ class NavBar extends Component{
       </Link>
 
 
-      <Link to="/login">
+      <Link to="/">
       <div className="item">
       <i className="sign out alternate icon"></i>
       Log out
