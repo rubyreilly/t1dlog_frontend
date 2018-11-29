@@ -11,7 +11,7 @@ import { BrowserRouter, Route, Switch} from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css';
 
 import {connect} from 'react-redux'
-import {fetchUsers} from './Redux/actions'
+// import {fetchUsers} from './Redux/actions'
 
 
 
@@ -29,7 +29,7 @@ class App extends Component {
 
 
   componentDidMount=()=>{
-    this.props.fetchUsers()
+    // this.props.fetchUsers()
     // this.props.fetchInsulins(this.props.user)
 
 
@@ -135,15 +135,15 @@ class App extends Component {
 }
 
 const mapStateToProps=(state)=>{
-  return{user:state.auth.currentUser.user_id}
+  return{currentUser:state.auth.currentUser.user_id}
 }
 
-const mapDispatchToProps=(dispatch)=>{
-  return{
-    fetchUsers:()=>dispatch(fetchUsers()),
-    // fetchInsulins:(user)=>dispatch(fetchInsulins(user))
-  }
-}
+// const mapDispatchToProps=(dispatch)=>{
+//   return{
+//     fetchUsers:()=>dispatch(fetchUsers()),
+//     // fetchInsulins:(user)=>dispatch(fetchInsulins(user))
+//   }
+// }
 
 // const mapDispatchToProps=(dispatch)=>{
 //   return{
@@ -155,4 +155,4 @@ const mapDispatchToProps=(dispatch)=>{
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps)(App)

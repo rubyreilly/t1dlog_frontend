@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 // import InsulinForm from './InsulinForm'
 // import MyInsulins from './MyInsulins'
 
+import {connect} from 'react-redux'
+import {fetchUser} from '../Redux/actions'
+import { withRouter } from "react-router-dom";
+
 class SignUp extends Component{
 
   state={
-    username:'',
-    password:''
+    username:''
 
   }
 
@@ -17,50 +20,38 @@ class SignUp extends Component{
   }
 
 
-  handleSignUp = () => {
-  fetch("http://localhost:3001/api/v1/users", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json"
-    },
-    body: JSON.stringify({
-      user: {
-        username: this.state.username,
-        password: this.state.password
-      }
-    })
-  })
-    .then(resp => resp.json())
-    .then(resp => localStorage.setItem("token", resp.token));
+  handleSignUp = (e) => {
+    e.preventDefault()
+    // const newUser = this.state.username
+    // this.props.postNewUser(this.state.username)
+    this.props.fetchUser(this.state.username)
+    this.props.history.push("/account")
+    // .then(resp => localStorage.setItem("token", resp.token));
   // resp => localStorage.setItem("token", resp.token)
 };
 
 
-  handleSubmit=(e)=>{
-    e.preventDefault();
-     this.handleSignUp();
-     this.props.history.push("/home");
-  }
+  // handleSubmit=(e)=>{
+  //   e.preventDefault();
+  //    this.handleSignUp();
+  //    this.props.history.push("/home");
+  // }
 
 
 
   render(){
     return(
 
-        <div className="ui center aligned green  segment">
+        <div className="ui center aligned red  segment">
      <h1>Sign Up</h1>
-      <form className="ui form" onSubmit={(e)=>this.handleSubmit(e)}>
+      <form className="ui form" onSubmit={(e)=>this.handleSignUp(e)}>
 
       <div className= "inline field">
       <label>username:</label>
       <input name='username' value={this.state.username} onChange={(e)=>this.handleChange(e)}></input>
       </div>
 
-      <div className= "inline field">
-      <label>password:</label>
-      <input name='password' value={this.state.password} onChange={(e)=>this.handleChange(e)}></input>
-      </div>
+
       <button>Sign Up</button>
 
       </form>
@@ -70,5 +61,22 @@ class SignUp extends Component{
   }
 }
 
+// const mapStateToProps= (state)=>{
+//   return {
+//     users: state.users
+//   }
+// }
 
-export default SignUp
+
+const mapDispatchToProps=(dispatch)=>{
+  return{
+    fetchUser:(username)=>dispatch(fetchUser(username)),
+    // postNewUser:(username)=>dispatch(postNewUser(username))
+  }
+}
+
+
+export default withRouter(connect(null, mapDispatchToProps)(SignUp))
+
+
+// export default SignUp

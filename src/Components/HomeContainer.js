@@ -17,11 +17,6 @@ class HomeContainer extends Component{
     // localStorage.getItem("token")
     //   ? this.props.fetchInsulins(this.props.user)
     //   : this.props.history.push("/signup");
-    // console.log("THIS IS USER:", this.props.user)
-    // console.log("INS",this.props.insulins)
-    // if (this.props.insulins.length !== 0){
-    //   this.props.selectInsulin(this.props.insulins[0].id)
-    // }
   }
 
   setDefaultTab=()=>{
@@ -33,9 +28,10 @@ class HomeContainer extends Component{
   render(){
     return(
       <div>
+      {this.setDefaultTab()}
       <TimerContainer/>
       <NewEntryForm/>
-      {this.setDefaultTab()}
+
       <LogContainer/>
       </div>
 
