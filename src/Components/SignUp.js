@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import InsulinForm from './InsulinForm'
-import MyInsulins from './MyInsulins'
+// import InsulinForm from './InsulinForm'
+// import MyInsulins from './MyInsulins'
 
 class SignUp extends Component{
 

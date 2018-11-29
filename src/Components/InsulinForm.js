@@ -58,8 +58,8 @@ class InsulinForm extends Component{
 }
 
 const mapStateToProps=(state)=>{
-  return{
-    user:state.auth.currentUser.user_id}
+  return{user:state.auth.currentUser.id}
+
 }
 
 const mapDispatchToProps=(dispatch)=>{

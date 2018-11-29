@@ -5,8 +5,8 @@ import TimerContainer from './TimerContainer'
 // import Header from './Header'
 // import NavBar from './NavBar'
 
-// import {connect} from 'react-redux'
-// import {fetchInsulins} from '../Redux/actions'
+import {connect} from 'react-redux'
+import {selectInsulin} from '../Redux/actions'
 
 
 
@@ -18,7 +18,16 @@ class HomeContainer extends Component{
     //   ? this.props.fetchInsulins(this.props.user)
     //   : this.props.history.push("/signup");
     // console.log("THIS IS USER:", this.props.user)
-    // this.props.fetchInsulins(this.props.user)
+    // console.log("INS",this.props.insulins)
+    // if (this.props.insulins.length !== 0){
+    //   this.props.selectInsulin(this.props.insulins[0].id)
+    // }
+  }
+
+  setDefaultTab=()=>{
+    if (this.props.insulins.length !== 0){
+      this.props.selectInsulin(this.props.insulins[0].id)
+    }
   }
 
   render(){
@@ -26,6 +35,7 @@ class HomeContainer extends Component{
       <div>
       <TimerContainer/>
       <NewEntryForm/>
+      {this.setDefaultTab()}
       <LogContainer/>
       </div>
 
@@ -34,15 +44,17 @@ class HomeContainer extends Component{
   }
 }
 
-// const mapStateToProps=(state)=>{
-//   return{user:state.auth.currentUser.user_id}
-// }
-//
-// const mapDispatchToProps=(dispatch)=>{
-//   return{
-//     fetchInsulins:(user)=>dispatch(fetchInsulins(user))
-//   }
-// }
+const mapStateToProps=(state)=>{
+  return{
+    insulins:state.insulins
+  }
+}
+
+const mapDispatchToProps=(dispatch)=>{
+  return{
+    selectInsulin:(insulinId)=>dispatch(selectInsulin(insulinId))
+  }
+}
 
 
-export default HomeContainer
+export default connect(mapStateToProps,mapDispatchToProps)(HomeContainer)

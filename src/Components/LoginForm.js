@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import {setUser} from '../Redux/actions'
+import {setUser, fetchInsulins} from '../Redux/actions'
+import { withRouter } from "react-router-dom";
+
+
 
 class LoginForm extends Component{
   state={
-    username:'',
-    password:''
+    username:''
+    // password:''
   }
 
   handleChange=(e)=>{
@@ -16,10 +19,13 @@ class LoginForm extends Component{
 
   handleLogin=(e)=>{
     e.preventDefault()
-    // console.log(this.props.users)
-    // const user = this.props.users.filter((user)=>user.username === this.state.username)
-    // this.props.selectUser(user)
-  }
+    console.log(this.props.users)
+    const user = this.props.users.find((user)=>user.username === this.state.username)
+    this.props.setUser(user)
+    console.log("U ID", user.id)
+    this.props.fetchInsulins(user.id)
+
+    this.props.history.push("/home")  }
 
   render(){
     return(
@@ -33,10 +39,7 @@ class LoginForm extends Component{
       <input name='username' value={this.state.username} onChange={(e)=>this.handleChange(e)}></input>
       </div>
 
-      <div className= "inline field">
-      <label>password:</label>
-      <input name='password' value={this.state.password} onChange={(e)=>this.handleChange(e)}></input>
-      </div>
+
 
       <button>login</button>
       </form>
@@ -57,9 +60,11 @@ const mapStateToProps= (state)=>{
 const mapDispatchToProps=(dispatch)=>{
   return{
     setUser:(user)=>dispatch(setUser(user)),
+    fetchInsulins:(user)=>dispatch(fetchInsulins(user))
+
   }
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginForm))
 // export default LoginForm

@@ -1,8 +1,8 @@
 const initialState = {
   users:[],
-  auth: { currentUser: {user_id:1,username:'kt', password:'password'} },
+  auth: { currentUser: {id:'',username:''} },
   insulins:[],
-  selectedInsulin:4
+  selectedInsulin: ''
 }
 
 const reducer = (state = initialState, action) =>{
@@ -14,10 +14,11 @@ const reducer = (state = initialState, action) =>{
     case("SET_USER"):{
       const currentUser = { currentUser: action.payload }
       console.log("CURRENT USER:", currentUser)
-      return {...state, auth:{currentUser}}
+      return {...state, auth:currentUser}
     }
 
     case("GET_INSULINS"):{
+      console.log("SHOULD BE INS", action.payload)
       return {...state, insulins:action.payload}
     }
     case("SELECT_INSULIN"):{

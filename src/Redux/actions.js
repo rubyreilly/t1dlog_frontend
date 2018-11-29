@@ -22,6 +22,7 @@ export const removeEntry = (entry)=>({type:'REMOVE_ENTRY', payload:entry})
 //--------------INSULINS------------//
 export const fetchInsulins = (user)=>{
   return (dispatch)=>{
+    console.log(user)
     return fetch(`http://localhost:3001/api/v1/users/${user}/insulins`)
     .then(res=>res.json())
     .then((res)=>dispatch(getInsulins(res)))
@@ -103,19 +104,19 @@ export const fetchUsers = ()=>{
 
 
 
-export const fetchCurrentUser = (token)=>{
-  return (dispatch)=>{
-    const options = {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: token
-      }}
-      return fetch(`http://localhost:3001/api/v1/current_user`, options)
-      .then(res => res.json())
-      // .then(res=>console.log(res))
-      .then((user)=>dispatch(setUser(user)))
-      .catch(console.error)
-
-  }
-}
+// export const fetchCurrentUser = (token)=>{
+//   return (dispatch)=>{
+//     const options = {
+//       headers: {
+//         "Content-Type": "application/json",
+//         Accept: "application/json",
+//         Authorization: token
+//       }}
+//       return fetch(`http://localhost:3001/api/v1/current_user`, options)
+//       .then(res => res.json())
+//       // .then(res=>console.log(res))
+//       .then((user)=>dispatch(setUser(user)))
+//       .catch(console.error)
+//
+//   }
+// }
