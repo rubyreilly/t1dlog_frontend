@@ -21,9 +21,9 @@ class NewEntryForm extends Component{
     const insulinObj=this.props.insulins.find((insulin)=>{
       return insulin.insulin_name == this.state.insulin
     })
-
+    console.log("SHOULD BE USER ID", this.props.user.id)
     const newEntry = {
-      user_id: this.props.user,
+      user_id: this.props.user.id,
       entry_date_and_time: this.state.time.toISOString(),
       insulin_id : insulinObj.id,
       status: 'active',
@@ -78,7 +78,7 @@ class NewEntryForm extends Component{
 const mapStateToProps=(state)=>{
   return{
     insulins: state.insulins,
-    user:state.auth.currentUser.id
+    user:state.auth.currentUser
 }
 }
 

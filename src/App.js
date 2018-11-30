@@ -10,7 +10,7 @@ import { BrowserRouter, Route, Switch} from "react-router-dom";
 
 import 'semantic-ui-css/semantic.min.css';
 
-import {connect} from 'react-redux'
+// import {connect} from 'react-redux'
 // import {fetchUsers} from './Redux/actions'
 
 
@@ -133,10 +133,10 @@ class App extends Component {
     );
   }
 }
-
-const mapStateToProps=(state)=>{
-  return{currentUser:state.auth.currentUser.user_id}
-}
+//
+// const mapStateToProps=(state)=>{
+//   return{currentUser:state.auth.currentUser.user_id}
+// }
 
 // const mapDispatchToProps=(dispatch)=>{
 //   return{
@@ -155,4 +155,5 @@ const mapStateToProps=(state)=>{
 
 
 
-export default connect(mapStateToProps)(App)
+// export default connect(mapStateToProps)(App)
+export default App

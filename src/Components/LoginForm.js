@@ -46,7 +46,7 @@ class LoginForm extends Component{
       </div>
 
       <Link to="/signup">
-      <div className="ui center aligned red compact segment">
+      <div className="ui center aligned red segment">
       New to DiaBase? Sign up!
       </div>
       </Link>

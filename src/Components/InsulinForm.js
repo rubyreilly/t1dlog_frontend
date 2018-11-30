@@ -18,7 +18,7 @@ class InsulinForm extends Component{
   handleSubmit=(e)=>{
     e.preventDefault()
     const newInsulin = {
-      user_id: this.props.user,
+      user_id: this.props.user.id,
       insulin_name: this.state.insulinName,
       insulin_duration_in_minutes : parseInt(this.state.duration)*60}
     this.props.postInsulin(newInsulin)
@@ -58,7 +58,7 @@ class InsulinForm extends Component{
 }
 
 const mapStateToProps=(state)=>{
-  return{user:state.auth.currentUser.id}
+  return{user:state.auth.currentUser}
 
 }
 

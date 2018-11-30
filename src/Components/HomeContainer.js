@@ -13,11 +13,11 @@ import {selectInsulin} from '../Redux/actions'
 
 class HomeContainer extends Component{
 
-  componentDidMount() {
+  // componentDidMount() {
     // localStorage.getItem("token")
     //   ? this.props.fetchInsulins(this.props.user)
     //   : this.props.history.push("/signup");
-  }
+  // }
 
   setDefaultTab=()=>{
     if (this.props.insulins.length !== 0){
@@ -26,12 +26,13 @@ class HomeContainer extends Component{
   }
 
   render(){
+    const username = this.props.user.username
     return(
       <div>
-      {this.setDefaultTab()}
+      <h3>signed in as {username}</h3>
       <TimerContainer/>
       <NewEntryForm/>
-
+      {this.setDefaultTab()}
       <LogContainer/>
       </div>
 
@@ -42,7 +43,8 @@ class HomeContainer extends Component{
 
 const mapStateToProps=(state)=>{
   return{
-    insulins:state.insulins
+    insulins:state.insulins,
+    user: state.auth.currentUser
   }
 }
 

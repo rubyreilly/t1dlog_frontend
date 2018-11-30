@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 // import LoginForm from './LoginForm'
 
 class NavBar extends Component{
@@ -9,27 +9,27 @@ class NavBar extends Component{
 
       <div className="ui compact vertical labeled menu">
 
-      <Link to="/home">
-      <div className="active item">
+      <NavLink to="/home">
+      <div className="item" activeClassName="active item">
       <i className="home icon"></i>
       Home
       </div>
-      </Link>
+      </NavLink>
 
-      <Link to="/account">
-      <div className="item">
+      <NavLink to="/account">
+      <div className="item" activeClassName="active item">
       <i className="cog icon"></i>
       Settings
       </div>
-      </Link>
+      </NavLink>
 
 
-      <Link to="/">
-      <div className="item">
+      <NavLink to="/">
+      <div className="item" activeClassName="active item">
       <i className="sign out alternate icon"></i>
       Log out
       </div>
-      </Link>
+      </NavLink>
 
       </div>
     )
