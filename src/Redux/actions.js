@@ -3,8 +3,7 @@
 //------------------user action creators--------------------//
 
 const setUser = (user)=>({type:'SET_USER', payload:user})
-//
-// const getUsers = (users)=>({type:'GET_USERS', payload:users})
+
 
 // const addUser = (user)=>({type:'ADD_USER', payload:user})
 

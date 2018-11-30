@@ -1,5 +1,5 @@
 const initialState = {
-  auth: { currentUser: {id:''} },
+  auth: { currentUser: {id:'', username:''} },
   insulins:[],
   selectedInsulin: ''
 }
@@ -9,7 +9,8 @@ const reducer = (state = initialState, action) =>{
 
     case("SET_USER"):{
       console.log(action.payload)
-      const currentUser = { currentUser: action.payload.id }
+      const userObj= {id:action.payload.id, username:action.payload.username}
+      const currentUser = { currentUser: userObj }
       let defaultInsulin = ''
       if (action.payload.insulins_info[0] !== undefined){
         let defaultInsulin = action.payload.insulins_info[0].id
