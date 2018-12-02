@@ -5,12 +5,13 @@ import { Link, NavLink } from "react-router-dom";
 class NavBar extends Component{
 
   render(){
+
     return(
 
       <div className="ui compact vertical labeled menu">
 
       <NavLink to="/home">
-      <div className="item" activeClassName="active item">
+      <div  className="item" activeClassName="active item">
       <i className="home icon"></i>
       Home
       </div>

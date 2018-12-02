@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 
 class TimerContainer extends Component{
 
+  
+
   generateTimerCards = ()=>{
       const insulins = this.props.insulins
 
