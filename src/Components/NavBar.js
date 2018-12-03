@@ -8,31 +8,28 @@ class NavBar extends Component{
 
     return(
 
-      <div className="ui compact vertical labeled menu">
+      <ul id='nav-bar'>
 
-      <NavLink to="/home">
-      <div  className="item" activeClassName="active item">
-      <i className="home icon"></i>
+      <Link to="/home">
+      <li className='nav-item'>
       Home
-      </div>
-      </NavLink>
+      </li>
+      </Link>
 
-      <NavLink to="/account">
-      <div className="item" activeClassName="active item">
-      <i className="cog icon"></i>
+      <Link to="/account">
+      <li className='nav-item'>
       Settings
-      </div>
-      </NavLink>
+      </li>
+      </Link>
 
 
-      <NavLink to="/">
-      <div className="item" activeClassName="active item">
-      <i className="sign out alternate icon"></i>
+      <Link to="/">
+<li className='nav-item'>
       Log out
-      </div>
-      </NavLink>
+</li>
+      </Link>
 
-      </div>
+      </ul>
     )
   }
 }

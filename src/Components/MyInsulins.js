@@ -13,7 +13,7 @@ class MyInsulins extends Component{
 
   render(){
     return(
-      <div className="ui center aligned violet segment">
+      <div >
       <h1>My Insulins</h1>
       <div className="ui two column grid">
 

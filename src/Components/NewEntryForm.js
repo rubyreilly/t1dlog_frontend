@@ -7,7 +7,9 @@ class NewEntryForm extends Component{
   state = {
     time:new Date(),
     insulin:"",
-    note:''
+    note:'',
+    bloodSugar:'',
+    numUnits:''
   }
 
   handleChange=(e)=>{
@@ -27,11 +29,15 @@ class NewEntryForm extends Component{
       entry_date_and_time: this.state.time.toISOString(),
       insulin_id : insulinObj.id,
       status: 'active',
-      note: this.state.note}
+      note: this.state.note,
+      current_blood_sugar: this.state.bloodSugar,
+      num_units_insulin: this.state.numUnits}
     this.props.postEntry(newEntry)
     this.setState({
       insulin: '',
-      note:''
+      note:'',
+      bloodSugar:'',
+      numUnits:''
     })
   }
 
@@ -44,7 +50,7 @@ class NewEntryForm extends Component{
 
     return(
 
-      <form className='ui form compact green segment' id='newform' onSubmit={(e)=>this.handleSubmit(e)}>
+      <form className='ui small form segment' id='newform' onSubmit={(e)=>this.handleSubmit(e)}>
       <h3>new entry form</h3>
       <div className='fields'>
 
@@ -57,6 +63,19 @@ class NewEntryForm extends Component{
 
       </div>
 
+      <div className="two wide field">
+        <label>Blood Sugar</label>
+        <input name='bloodSugar' value={this.state.bloodSugar} onChange={(e)=>this.handleChange(e)}></input>
+        </div>
+
+
+
+      <div className="two wide field">
+        <label># Units</label>
+        <input name='numUnits' value={this.state.numUnits} onChange={(e)=>this.handleChange(e)}></input>
+        </div>
+
+
 
 
       <div className="field">
@@ -64,6 +83,7 @@ class NewEntryForm extends Component{
         <textarea rows="2" name='note' value={this.state.note} onChange={(e)=>this.handleChange(e)}></textarea>
         </div>
       </div>
+
 
       <button>add to log</button>
 

@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 
 class TimerContainer extends Component{
 
-  
+
 
   generateTimerCards = ()=>{
       const insulins = this.props.insulins
@@ -25,7 +25,7 @@ class TimerContainer extends Component{
   render(){
     return(
 
-      <div className="ui two column grid" id='log'>
+      <div id='timers'>
 
       {this.generateTimerCards()}
       </div>

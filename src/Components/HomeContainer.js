@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import LogContainer from './LogContainer'
 import NewEntryForm from './NewEntryForm'
 import TimerContainer from './TimerContainer'
-// import Header from './Header'
-// import NavBar from './NavBar'
-
 import {connect} from 'react-redux'
 import {selectInsulin} from '../Redux/actions'
 
@@ -13,11 +10,9 @@ import {selectInsulin} from '../Redux/actions'
 
 class HomeContainer extends Component{
 
-  // componentDidMount() {
-    // localStorage.getItem("token")
-    //   ? this.props.fetchInsulins(this.props.user)
-    //   : this.props.history.push("/signup");
-  // }
+  state = {
+    formClicked: false
+  }
 
   setDefaultTab=()=>{
     if (this.props.insulins.length !== 0){
@@ -26,15 +21,32 @@ class HomeContainer extends Component{
   }
 
   render(){
-    const username = this.props.user.username
+
+
     return(
-      <div>
-      <h3>signed in as {username}</h3>
-      <TimerContainer/>
-      <NewEntryForm/>
-      {this.setDefaultTab()}
-      <LogContainer/>
+
+      <div id='home'>
+
+        <div id="timer-container">
+      <TimerContainer/></div>
+
+      <div id='log-container' className = "ui  segment">
+
+      <div id='new-form-visible'>
+      <div onClick = {()=>this.setState({formClicked:!this.state.formClicked})}>
+      <button id='new-entry-btn'>{this.state.formClicked ?  "Close Form" : "New Entry"}</button>
       </div>
+
+
+      {this.state.formClicked ? <NewEntryForm/> : null }
+      </div>
+
+      {this.setDefaultTab()}
+      <div id='log'><LogContainer/></div>
+      </div>
+
+      </div>
+
 
 
     )
@@ -43,8 +55,7 @@ class HomeContainer extends Component{
 
 const mapStateToProps=(state)=>{
   return{
-    insulins:state.insulins,
-    user: state.auth.currentUser
+    insulins:state.insulins
   }
 }
 

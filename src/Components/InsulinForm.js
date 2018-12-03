@@ -34,7 +34,7 @@ class InsulinForm extends Component{
     return(
 
 
-      <div className = "ui center aligned blue segment">
+      <div>
       <h1>New Insulin</h1>
       <form className="ui form" onSubmit={(e)=>this.handleSubmit(e)}>
 

@@ -1,14 +1,113 @@
 body {
   margin: 50px;
+  margin-bottom: 100px;
+  background-color: black;
 }
 
-#log{
-  margin-top:50px;
+#home{
+  display: flex;
 }
 
-#newform{
-  margin-top:50px;
+#nav-bar{
+  list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
+
+.nav-item{
+  display: inline;
+
+   padding: 12px;
+}
+
+#new-form-visible{
+  margin-top: 25px;
+}
+
+#my-ins{
+  width: 30vw;
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 75px;
+  /* margin-right: 20px; */
+  box-shadow:  0px 0px 60px blue;
+  /* background-color: #ffb600; */
+}
+
+#ins-form{
+  width: 30vw;
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 75px;
+  margin-right: 40px;
+  margin-left: 40px;
+
+  box-shadow:  0px 0px 60px blue;
+}
+
+
+#user-edit-form{
+  width: 30vw;
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 75px;
+  /* margin-right: 20px; */
+  box-shadow:  0px 0px 60px blue;
+  /* background-color: #f9f509; */
+}
+
+#timer-container{
+  width: 25vw;
+    /* height: 75vh; */
+  /* overflow: scroll; */
+  /* height: 95vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-flex-start;
+  margin-right: 40px;
+}
+
+#log-container{
+  width: 75vw;
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
+}
+
+
+#timers{
+  margin-top: 15px;
+  margin-bottom:50px;
+}
+
+#entry{
+  /* box-shadow-color: #0bf107; */
+  box-shadow: inset 0px 0px 40px #0bf107;
+}
+
+#timer-card{
+  box-shadow:  0px 0px 60px #0bf107;
+  margin-bottom: 30px;
+  background-color: #9ea8ba;
+
+}
+
+
 
 @font-face {
   font-family: 'Press Start 2P', cursive;
@@ -20,14 +119,41 @@ body {
 
 #head{
   font-family: 'Press Start 2P';
+  color: #0bf107;
   /* font-family:'VT323'; */
 }
 
-#clock{
+#username{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  color: red;
+  box-shadow:  0px 0px 60px blue;
 
+
+}
+
+#new-entry-btn{
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  box-shadow: 0px 0px 50px white;
+
+}
+
+#ins-log{
+  margin-top:10px;
+  background-color: #9ea8ba;
+}
+
+#log{
+  margin-top: 5px;
+}
+
+#clock{
   font-size: 100%;
   text-align: center;
   color: #0bf107;
   text-shadow: 0px 0px 70px;
-  font-family: 'Press Start 2P', cursive;
+  /* font-family: 'Press Start'; */
 }

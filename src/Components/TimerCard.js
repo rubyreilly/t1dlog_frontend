@@ -28,16 +28,18 @@ class TimerCard extends Component{
     const formattedDuration= moment.duration(insulinObj.insulin_duration_in_minutes, "minutes").format("h")
 
     return(
-      <div className="column">
-      <div className="ui center aligned green segment">
+
+      <div className="ui center aligned segment" id='timer-card'>
 
       <h3>{insulinObj.insulin_name} timer</h3>
       <Timer entryObj={entryObj} insulinObj={insulinObj}/>
-      <h2>of {formattedDuration} hours remaining</h2>
-      <h3>Administered: {formattedDate} at {formattedStartTime}</h3>
+      <p>of {formattedDuration} hours</p>
+
+      <p>{formattedDate}</p>
+      <p>{formattedStartTime}</p>
 
       </div>
-      </div>
+
 
     )
   }

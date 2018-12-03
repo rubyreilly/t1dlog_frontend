@@ -23,17 +23,13 @@ class AccountForm extends Component{
   }
 
 
-
-  // {localStorage.getItem("token")
-  //   ? render everything : this.props.history.push("/signup")}
-
-
   render(){
     return(
+      <div id='home'>
       <div>
-        <div className="ui two column grid">
-        <div className="column">
-        <div className="ui center aligned green  segment">
+
+
+        <div className="ui center aligned segment" id='user-edit-form'>
      <h1>Edit Account Info</h1>
       <form className="ui form" onSubmit={(e)=>this.handleSubmit(e)}>
       <div className= "inline field">
@@ -48,12 +44,14 @@ class AccountForm extends Component{
       </form>
       </div>
       </div>
-      <div className="column">
-      <InsulinForm/>
-      <MyInsulins/>
+
+<div className="ui center aligned segment" id='ins-form'>
+      <InsulinForm/></div>
+<div className="ui center aligned segment" id='my-ins'>
+      <MyInsulins/></div>
       </div>
-      </div>
-      </div>
+
+
     )
   }
 }
