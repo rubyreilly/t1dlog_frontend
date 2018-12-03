@@ -17,7 +17,7 @@ class InsulinCard extends Component{
     const formattedDuration= moment.duration(this.props.insulinObj.insulin_duration_in_minutes, "minutes").format("h")
     return(
       <div className="column">
-      <div className="ui center aligned blue compact segment">
+      <div className="ui center aligned red  compact segment">
       <p>{this.props.insulinObj.insulin_name}</p>
       <p>{formattedDuration} hour duration</p>
       <button onClick={(e)=>this.handleDelete(e)}>delete</button>

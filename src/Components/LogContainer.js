@@ -21,7 +21,7 @@ class LogContainer extends Component{
 
   render(){
     return(
-      <div id='log'>
+      <div id='ins-log' >
       <div className="ui top attached tabular menu">
 
         {this.generateTabs(this.props.insulins)}

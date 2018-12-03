@@ -9,6 +9,7 @@ import AccountForm from './Components/AccountForm'
 import { BrowserRouter, Route, Switch} from "react-router-dom";
 
 import 'semantic-ui-css/semantic.min.css';
+import {connect} from 'react-redux'
 
 
 
@@ -18,10 +19,12 @@ import './App.css';
 class App extends Component {
 
   render() {
+    const username = this.props.user.username
+
     return (
       <BrowserRouter>
 
-      <div>
+      <div >
 
         <div className="ui three column grid">
           <div className="column">
@@ -30,6 +33,12 @@ class App extends Component {
         <div className="column">
           <Header/>
         </div>
+        <div className="column">
+          <div  id='username'><p>signed in as {username}</p></div>
+        </div>
+
+
+
       </div>
 
 
@@ -58,4 +67,10 @@ class App extends Component {
   }
 }
 
-export default App
+const mapStateToProps=(state)=>{
+  return{
+    user: state.auth.currentUser
+  }
+}
+
+export default connect(mapStateToProps)(App)

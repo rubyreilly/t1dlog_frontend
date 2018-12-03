@@ -40,11 +40,15 @@ class LogEntry extends Component{
     const timeLeft = this.calculateTimeLeft()
 
     return(
-      <tr className={entryObj.status === "active" ? "ui inverted green table segment" : null}>
+      <tr id={entryObj.status === "active" ? "entry" : null}>
       <td data-label="date">{formattedDate}</td>
       <td data-label="start-time">{formattedStartTime}</td>
       <td data-label="end_time">{entryObj.status === "active" ? formattedEndTime : "-"}</td>
       <td data-label="time_left">{entryObj.status === "complete" ? "-":timeLeft}</td>
+
+      <td data-label="bloodSugar">{entryObj.current_blood_sugar !== null ? entryObj.current_blood_sugar : "-"}</td>
+      <td data-label="numUnits">{entryObj.num_units_insulin !== null ? entryObj.num_units_insulin : "-"}</td>
+
       <td data-label="note">{entryObj.note === "" || entryObj.note === null ? "-":entryObj.note}</td>
       <td data-label="status">{entryObj.status}</td>
       <td><button onClick={(e)=>this.handleDelete(e)}>delete</button></td>
