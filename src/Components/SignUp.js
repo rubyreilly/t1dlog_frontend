@@ -42,7 +42,11 @@ class SignUp extends Component{
   render(){
     return(
 
-        <div className="ui center aligned red  segment">
+      <div id='home'>
+      <div className='outer-column'></div>
+      <div className="ui center aligned red segment" id='user-form'>
+
+
      <h1>Sign Up</h1>
       <form className="ui form" onSubmit={(e)=>this.handleSignUp(e)}>
 
@@ -55,6 +59,9 @@ class SignUp extends Component{
       <button>Sign Up</button>
 
       </form>
+
+      </div>
+      <div className='outer-column'></div>
       </div>
 
     )

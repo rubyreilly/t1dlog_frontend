@@ -5,8 +5,6 @@
 const setUser = (user)=>({type:'SET_USER', payload:user})
 
 
-// const addUser = (user)=>({type:'ADD_USER', payload:user})
-
 //------------------insulin action creators--------------------//
 
 // const getInsulins = (insulins)=>({type:'GET_INSULINS', payload:insulins})
@@ -55,6 +53,7 @@ export const postInsulin= (newInsulin)=>{
     .catch(console.error)
   }
 }
+
 
 
 
@@ -122,21 +121,20 @@ export const fetchUser = (name)=>{
   }
 }
 
-
-// export const postNewUser = (name)=>{
-//   return (dispatch)=>{
-//     const options = {
-//       method: "POST",
-//       body: JSON.stringify({user:{username:name}}),
-//       headers:{
-//         'Content-Type': 'application/json',
-//         'Accept': 'application/json'
-//       }
-//     }
-//     return fetch(`http://localhost:3001/api/v1/users`, options)
-//     .then(res=>res.json())
-//     .then((res) => dispatch(addUser(res)))
-//     .catch(console.error)
-
-  // }
-// }
+export const updateUser = (userData)=>{
+  console.log("USERDATA IN PATCH", userData)
+  return (dispatch)=>{
+    const options={
+      method: "PATCH",
+      body: JSON.stringify({user: userData}),
+      headers:{
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }
+    return fetch(`http://localhost:3001/api/v1/users/${userData.id}`, options)
+    .then(res=>res.json())
+    .then((res)=>dispatch(setUser(res.user)))
+    .catch(console.error)
+  }
+}
