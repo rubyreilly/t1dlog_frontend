@@ -1,7 +1,9 @@
 body {
   margin: 50px;
   margin-bottom: 100px;
-  background-color: black;
+  background-image: url('./images/chris-barbalis-671744-unsplash.jpg') ;
+  background-size: cover;
+  font-weight: bold;
 }
 
 #home{
@@ -39,10 +41,12 @@ body {
   display: inline;
 
    padding: 12px;
+   color:white;
 }
 
 #new-form-visible{
   margin-top: 25px;
+
 }
 
 #my-ins{
@@ -106,7 +110,7 @@ background-color: #9ea8ba;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: blue;
+  background-color: #cec2d6;
 }
 
 
@@ -123,7 +127,7 @@ background-color: #9ea8ba;
 #timer-card{
   box-shadow:  0px 0px 60px #0bf107;
   margin-bottom: 30px;
-  background-color: #9ea8ba;
+  background-color: #dee2e8;
 
 }
 
@@ -140,7 +144,8 @@ background-color: #9ea8ba;
 #head{
   font-family: 'Press Start 2P';
   color: #0bf107;
-  /* font-family:'VT323'; */
+   /* font-family:'Audiowide', cursive; */
+  /* font-family: 'Orbitron', sans-serif; */
 }
 
 #username{
@@ -148,7 +153,8 @@ background-color: #9ea8ba;
   top: 0px;
   right: 0px;
   color: red;
-  box-shadow:  0px 0px 60px blue;
+  /* box-shadow:  0px 0px 60px blue;
+  background-color: black; */
 
 
 }
@@ -158,12 +164,19 @@ background-color: #9ea8ba;
   top: 25px;
   right: 25px;
   box-shadow: 0px 0px 50px white;
+}
+
+#add-new-entry-btn{
+  position: absolute;
+  bottom: 30px;
+  right: 110px;
+  /* box-shadow: 0px 0px 20px red; */
 
 }
 
 #ins-log{
   margin-top:10px;
-  background-color: #9ea8ba;
+  background-color: #dee2e8;
 }
 
 #log{

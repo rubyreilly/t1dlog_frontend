@@ -84,7 +84,7 @@ class NewEntryForm extends Component{
         </div>
 
         <div className="field">
-        <button>add to log</button>
+        <button id='add-new-entry-btn'>add to log</button>
         </div>
       </div>
 

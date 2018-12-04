@@ -34,7 +34,7 @@ class App extends Component {
           <Header/>
         </div>
         <div className="column">
-          <div  id='username'><p>signed in as {username}</p></div>
+          <div  id='username'><p>{ username===''? null : `signed in as ${username}` }</p></div>
         </div>
 
 

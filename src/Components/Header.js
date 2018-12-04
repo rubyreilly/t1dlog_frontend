@@ -6,7 +6,7 @@ class Header extends Component{
       <div>
       <h1 className="ui center aligned icon header" id='head'>
 
-            DiaBase
+            D i a B a s e
             </h1>
 
       </div>
