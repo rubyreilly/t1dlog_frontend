@@ -45,18 +45,18 @@ class App extends Component {
       <Switch>
       <Route
           path="/signup"
-          render={props => <SignUp handleSignUp={this.handleSignUp} />}
+          render={props => <SignUp />}
         />
 
-
             <Route path="/account" component={AccountForm} />
+
             <Route path="/home" component={HomeContainer} />
 
 
 
             <Route
               path="/"
-                render={props => <LoginForm handleLogin={this.handleLogin} />}
+                render={props => <LoginForm />}
               />
           </Switch>
 

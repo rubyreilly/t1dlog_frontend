@@ -51,7 +51,7 @@ class NewEntryForm extends Component{
     return(
 
       <form className='ui small form segment' id='newform' onSubmit={(e)=>this.handleSubmit(e)}>
-      <h3>new entry form</h3>
+
       <div className='fields'>
 
       <div className='field'>
@@ -82,10 +82,13 @@ class NewEntryForm extends Component{
         <label>Note</label>
         <textarea rows="2" name='note' value={this.state.note} onChange={(e)=>this.handleChange(e)}></textarea>
         </div>
+
+        <div className="field">
+        <button>add to log</button>
+        </div>
       </div>
 
 
-      <button>add to log</button>
 
       </form>
 

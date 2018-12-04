@@ -29,8 +29,9 @@ class LoginForm extends Component{
 
   render(){
     return(
-      <div>
-      <div className = "ui center aligned green segment">
+      <div id='home'>
+      <div className='outer-column'></div>
+      <div className="ui center aligned segment" id='user-form'>
       <h1>Login</h1>
       <form className="ui form" onSubmit={e=>this.handleLogin(e)}>
 
@@ -39,18 +40,20 @@ class LoginForm extends Component{
       <input name='username' value={this.state.username} onChange={(e)=>this.handleChange(e)}></input>
       </div>
 
-
-
       <button>login</button>
       </form>
-      </div>
-
 
       <div className="ui center aligned red compact segment">
       <Link to="/signup">
       New to DiaBase? Sign up!
       </Link>
       </div>
+      </div>
+
+      <div className='outer-column'></div>
+
+
+
 
 
       </div>

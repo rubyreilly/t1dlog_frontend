@@ -5,7 +5,7 @@ class Header extends Component{
     return(
       <div>
       <h1 className="ui center aligned icon header" id='head'>
-        
+
             DiaBase
             </h1>
 

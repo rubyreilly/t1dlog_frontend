@@ -20,8 +20,16 @@ const reducer = (state = initialState, action) =>{
         insulins: action.payload.insulins_info,
         selectedInsulin: defaultInsulin
       }
-
     }
+
+      // case('EDIT_USER'):{
+      //   console.log(action.payload)
+      //   const userObj= {id:action.payload.id, username:action.payload.username}
+      //   const currentUser = { currentUser: userObj }
+      //
+      // }
+
+
     // case("ADD_USER"):{
     //   const newUsers = [...state.users, action.payload]
     //   return {...state, users: newUsers}
