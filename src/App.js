@@ -10,22 +10,25 @@ import { BrowserRouter, Route, Switch} from "react-router-dom";
 
 import 'semantic-ui-css/semantic.min.css';
 import {connect} from 'react-redux'
-
-
-
+import {logInOut} from './Redux/actions'
 
 import './App.css';
 
 class App extends Component {
 
+
+  logout = () => {
+    this.props.logInOut(false)
+    }
+
   render() {
-    
 
     return (
       <BrowserRouter>
 
       <div >
 
+       {this.props.loggedIn ?
         <div className="ui three column grid">
           <div className="column">
             <NavBar/>
@@ -33,31 +36,40 @@ class App extends Component {
         <div className="column">
           <Header/>
         </div>
+        </div>
+        :
+          <Header/>
+
+      }
 
 
 
-
-      </div>
-
-      <div className='main'>
+      {this.props.loggedIn ?
+        <div className='main'>
       <Switch>
-      <Route
-          path="/signup"
-          render={props => <SignUp />}
-        />
+
 
             <Route path="/account" component={AccountForm} />
 
             <Route path="/home" component={HomeContainer} />
+            </Switch>
+            </div>
+              :
+              <div className='main'>
+              <Switch>
 
-
+              <Route
+                  path="/signup"
+                  render={props => <SignUp />}
+                />
 
             <Route
               path="/"
                 render={props => <LoginForm />}
               />
           </Switch>
-          </div>
+            </div>
+        }
 
       </div>
       </BrowserRouter>
@@ -68,8 +80,15 @@ class App extends Component {
 
 const mapStateToProps=(state)=>{
   return{
-    user: state.auth.currentUser
+    user: state.auth.currentUser,
+    loggedIn : state.loggedIn
   }
 }
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps=(dispatch)=>{
+  return{
+    logInOut:(loggedIn)=>dispatch(logInOut(loggedIn)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

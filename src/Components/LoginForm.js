@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import {fetchUser} from '../Redux/actions'
+import {fetchUser, logInOut} from '../Redux/actions'
 import { withRouter, Link } from "react-router-dom";
+
 
 
 
@@ -24,6 +25,7 @@ class LoginForm extends Component{
     this.props.fetchUser(this.state.username)
     // console.log("U ID", user.id)
     // this.props.fetchInsulins(user.id)
+    this.props.logInOut(true)
 
     this.props.history.push("/home")  }
 
@@ -53,7 +55,7 @@ class LoginForm extends Component{
             <Link to="/signup">
             New to DiaBase? Sign up!
             </Link>
-            
+
             </div>
 
       </div>
@@ -81,7 +83,8 @@ class LoginForm extends Component{
 const mapDispatchToProps=(dispatch)=>{
   return{
     // setUser:(user)=>dispatch(setUser(user)),
-    fetchUser:(username)=>dispatch(fetchUser(username))
+    fetchUser:(username)=>dispatch(fetchUser(username)),
+    logInOut:(loggedIn)=>dispatch(logInOut(loggedIn))
 
   }
 }

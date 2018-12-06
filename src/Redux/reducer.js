@@ -1,4 +1,5 @@
 const initialState = {
+  loggedIn: false,
   auth: { currentUser: {id:'', username:''} },
   insulins:[],
   selectedInsulin: ''
@@ -20,6 +21,11 @@ const reducer = (state = initialState, action) =>{
         insulins: action.payload.insulins_info,
         selectedInsulin: defaultInsulin
       }
+    }
+
+    case('LOG_IN_OUT'):{
+      console.log(action.payload)
+      return {...state, loggedIn: action.payload}
     }
 
       // case('EDIT_USER'):{
@@ -68,7 +74,7 @@ const reducer = (state = initialState, action) =>{
       const newInsulins = [...state.insulins].map((insulin)=>{
         if (insulin.id === action.payload.insulin_id){
           const newEntries = [action.payload,...insulin.all_associated_entries]
-          
+
           return {...insulin,all_associated_entries: newEntries}
         }else{
           return {...insulin}
