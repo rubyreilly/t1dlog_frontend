@@ -19,7 +19,7 @@ import './App.css';
 class App extends Component {
 
   render() {
-    const username = this.props.user.username
+    
 
     return (
       <BrowserRouter>
@@ -33,15 +33,13 @@ class App extends Component {
         <div className="column">
           <Header/>
         </div>
-        <div className="column">
-          <div  id='username'><p>{ username===''? null : `signed in as ${username}` }</p></div>
-        </div>
+
 
 
 
       </div>
 
-
+      <div className='main'>
       <Switch>
       <Route
           path="/signup"
@@ -59,6 +57,7 @@ class App extends Component {
                 render={props => <LoginForm />}
               />
           </Switch>
+          </div>
 
       </div>
       </BrowserRouter>

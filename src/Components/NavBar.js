@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from "react-router-dom";
 // import LoginForm from './LoginForm'
+import {connect} from 'react-redux'
+
 
 class NavBar extends Component{
 
   render(){
+    const username = this.props.user.username
 
     return(
 
@@ -24,8 +27,8 @@ class NavBar extends Component{
 
 
       <Link to="/">
-<li className='nav-item'>
-      Log out
+<li className='nav-item'>{ username===''? 'Login' : `Log out ${username}` }
+
 </li>
       </Link>
 
@@ -34,4 +37,10 @@ class NavBar extends Component{
   }
 }
 
-export default NavBar
+const mapStateToProps=(state)=>{
+  return{
+    user: state.auth.currentUser
+  }
+}
+
+export default connect(mapStateToProps)(NavBar)

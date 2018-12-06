@@ -66,6 +66,26 @@ export const deleteInsulin= (insulinObj)=>{
   }
 }
 
+// 
+// export const updateInsulin = (insulinObj)=>{
+//   console.log("INSOBJ IN PATCH", insulinObj)
+//   return (dispatch)=>{
+//     const options={
+//       method: "PATCH",
+//       body: JSON.stringify({insulin: insulinObj}),
+//       headers:{
+//         'Content-Type': 'application/json',
+//         'Accept': 'application/json'
+//       }
+//     }
+//     return fetch(`http://localhost:3001/api/v1/users/${insulinObj.user_id}/insulins/${insulinObj.id}`, options)
+//     .then(res=>res.json())
+//     .then(res=>console.log(res))
+//     // .then((res)=>dispatch(setUser(res.user)))
+//     // .catch(console.error)
+//   }
+// }
+
 
 //---------------entry thunk creators-----------------//
 
@@ -95,6 +115,25 @@ export const deleteEntry= (entryObj)=>{
     return fetch(`http://localhost:3001/api/v1/users/${entryObj.user_id}/entries/${entryObj.id}`, options)
   }
 }
+
+// export const updateEntry = (entryObj)=>{
+//   console.log("entryDATA IN PATCH", entryObj)
+//   return (dispatch)=>{
+//     const options={
+//       method: "PATCH",
+//       body: JSON.stringify({entry:entryObj}),
+//       headers:{
+//         'Content-Type': 'application/json',
+//         'Accept': 'application/json'
+//       }
+//     }
+//     return fetch(`http://localhost:3001/api/v1/users/${entryObj.user_id}/entries/${entryObj.id}`, options)
+//     .then(res=>res.json())
+//     .then(res=>console.log(res))
+//     // .then((res)=>dispatch(setUser(res.user)))
+//     // .catch(console.error)
+//   }
+// }
 
 
 
