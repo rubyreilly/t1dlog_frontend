@@ -43,10 +43,18 @@ class InsulinForm extends Component{
       <input name='insulinName' value={this.state.insulinName} onChange={(e)=>this.handleChange(e)}></input>
       </div>
 
-      <div className="inline field">
-      <label>duration:</label>
-      <input name='duration' value={this.state.duration} placeholder='hours' onChange={(e)=>this.handleChange(e)}></input>
+<div className= "inline field">
+    <label>duration in hours:</label>
+      <select name='duration' value={this.state.duration} onChange={(e)=>this.handleChange(e)}>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>12</option>
+      <option>24</option>
+      </select>
       </div>
+
+
 
       <button>add insulin</button>
       </form>
