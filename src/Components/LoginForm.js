@@ -31,6 +31,8 @@ class LoginForm extends Component{
     return(
       <div id='home'>
       <div className='outer-column'></div>
+
+      <div>
       <div className="ui center aligned segment" id='user-form'>
       <h1>Login</h1>
       <form className="ui form" onSubmit={e=>this.handleLogin(e)}>
@@ -43,16 +45,22 @@ class LoginForm extends Component{
       <button>login</button>
       </form>
 
-      <div className="ui center aligned red compact segment">
-      <Link to="/signup">
-      New to DiaBase? Sign up!
-      </Link>
       </div>
+
+
+
+<div id='sign-up-link'>
+            <Link to="/signup">
+            New to DiaBase? Sign up!
+            </Link>
+            
+            </div>
+
       </div>
+
+
 
       <div className='outer-column'></div>
-
-
 
 
 

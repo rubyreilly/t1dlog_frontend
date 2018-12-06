@@ -30,10 +30,7 @@ const reducer = (state = initialState, action) =>{
       // }
 
 
-    // case("ADD_USER"):{
-    //   const newUsers = [...state.users, action.payload]
-    //   return {...state, users: newUsers}
-    // }
+
 
 
     case("SELECT_INSULIN"):{
@@ -71,6 +68,7 @@ const reducer = (state = initialState, action) =>{
       const newInsulins = [...state.insulins].map((insulin)=>{
         if (insulin.id === action.payload.insulin_id){
           const newEntries = [action.payload,...insulin.all_associated_entries]
+          
           return {...insulin,all_associated_entries: newEntries}
         }else{
           return {...insulin}

@@ -9,7 +9,7 @@ import {updateUser} from '../Redux/actions'
 class AccountForm extends Component{
 
   state={
-    username:''
+    username: this.props.user.username
   }
 
   handleChange=(e)=>{
@@ -35,7 +35,7 @@ class AccountForm extends Component{
 
 
         <div className="ui center aligned segment" id='user-edit-form'>
-     <h1>Edit Account Info</h1>
+     <h1>Edit Account</h1>
       <form className="ui form" onSubmit={(e)=>this.handleSubmit(e)}>
       <div className= "inline field">
       <label>username:</label>

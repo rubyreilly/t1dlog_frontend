@@ -28,8 +28,14 @@ class LogEntry extends Component{
   handleDelete=(e)=>{
     this.props.removeEntry(this.props.entryObj)
     this.props.deleteEntry(this.props.entryObj)
-
   }
+
+  // handleUpdate=(e)=>{
+  //
+  //   this.props.updateEntry(this.props.entryObj)
+  // }
+
+
 
 
   render(){
@@ -60,7 +66,8 @@ class LogEntry extends Component{
 const mapDispatchToProps=(dispatch)=>{
   return{
     deleteEntry:(entryObj)=>dispatch(deleteEntry(entryObj)),
-    removeEntry:(entryObj)=>dispatch(removeEntry(entryObj))
+    removeEntry:(entryObj)=>dispatch(removeEntry(entryObj)),
+    // updateEntry:(entryObj)=>dispatch(updateEntry(entryObj))
   }
 }
 
