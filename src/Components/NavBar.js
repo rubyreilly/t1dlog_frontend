@@ -2,9 +2,15 @@ import React, { Component } from 'react';
 import { Link, NavLink } from "react-router-dom";
 // import LoginForm from './LoginForm'
 import {connect} from 'react-redux'
+import {logInOut} from '../Redux/actions'
+
 
 
 class NavBar extends Component{
+
+  logout = () => {
+    this.props.logInOut(false)
+  }
 
   render(){
     const username = this.props.user.username
@@ -27,7 +33,7 @@ class NavBar extends Component{
 
 
       <Link to="/">
-<li className='nav-item'>{ username===''? 'Login' : `Log out ${username}` }
+<li className='nav-item'>{ this.props.loggedIn ? <button onClick={this.logout}>Logout</button > : null }
 
 </li>
       </Link>
@@ -39,8 +45,15 @@ class NavBar extends Component{
 
 const mapStateToProps=(state)=>{
   return{
-    user: state.auth.currentUser
+    user: state.auth.currentUser,
+    loggedIn: state.loggedIn
   }
 }
 
-export default connect(mapStateToProps)(NavBar)
+const mapDispatchToProps=(dispatch)=>{
+  return{
+    logInOut:(loggedIn)=>dispatch(logInOut(loggedIn))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

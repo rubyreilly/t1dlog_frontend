@@ -186,7 +186,9 @@ background-color: #9ea8ba;
   font-family: 'Press Start 2P';
   color: #0bf107;
   position: fixed;
-
+  top: 30px;
+  left: 35%;
+  margin-right: -50%;
    /* font-family:'Audiowide', cursive; */
   /* font-family: 'Orbitron', sans-serif; */
 }
@@ -217,7 +219,7 @@ background-color: #9ea8ba;
   bottom: 10px;
   right: 10px;
   box-shadow:  0px 0px 20px yellow;
-  /* background-color: yellow; */ 
+  /* background-color: yellow; */
 
 }
 

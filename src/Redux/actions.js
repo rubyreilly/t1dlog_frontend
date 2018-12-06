@@ -4,6 +4,7 @@
 
 const setUser = (user)=>({type:'SET_USER', payload:user})
 
+export const logInOut = (loggedIn)=>({type:'LOG_IN_OUT', payload:loggedIn})
 
 //------------------insulin action creators--------------------//
 
@@ -66,7 +67,7 @@ export const deleteInsulin= (insulinObj)=>{
   }
 }
 
-// 
+//
 // export const updateInsulin = (insulinObj)=>{
 //   console.log("INSOBJ IN PATCH", insulinObj)
 //   return (dispatch)=>{

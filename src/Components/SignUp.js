@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // import MyInsulins from './MyInsulins'
 
 import {connect} from 'react-redux'
-import {fetchUser} from '../Redux/actions'
+import {fetchUser, logInOut} from '../Redux/actions'
 import { withRouter } from "react-router-dom";
 
 class SignUp extends Component{
@@ -25,6 +25,8 @@ class SignUp extends Component{
     // const newUser = this.state.username
     // this.props.postNewUser(this.state.username)
     this.props.fetchUser(this.state.username)
+    this.props.logInOut(true)
+
     this.props.history.push("/account")
     // .then(resp => localStorage.setItem("token", resp.token));
   // resp => localStorage.setItem("token", resp.token)
@@ -78,6 +80,8 @@ class SignUp extends Component{
 const mapDispatchToProps=(dispatch)=>{
   return{
     fetchUser:(username)=>dispatch(fetchUser(username)),
+    logInOut:(loggedIn)=>dispatch(logInOut(loggedIn))
+
     // postNewUser:(username)=>dispatch(postNewUser(username))
   }
 }
