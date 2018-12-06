@@ -187,11 +187,13 @@ background-color: #9ea8ba;
   color: #0bf107;
   position: fixed;
   top: 30px;
-  left: 35%;
+
+  left: 40%;
   margin-right: -50%;
    /* font-family:'Audiowide', cursive; */
   /* font-family: 'Orbitron', sans-serif; */
 }
+
 
 #username{
   position: absolute;
@@ -217,11 +219,20 @@ background-color: #9ea8ba;
 #add-new-entry-btn{
   position: absolute;
   bottom: 10px;
-  right: 10px;
+  left: 51%;
+  /* right: 10px; */
   box-shadow:  0px 0px 20px yellow;
+  margin: 5px;
   /* background-color: yellow; */
 
 }
+
+
+#new-field{
+  padding: 10px;
+}
+
+
 
 #ins-log{
   margin-top:10px;
@@ -237,5 +248,4 @@ background-color: #9ea8ba;
   text-align: center;
   color: #0bf107;
   text-shadow: 0px 0px 70px;
-  /* font-family: 'Press Start'; */
 }
